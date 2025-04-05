@@ -27,7 +27,8 @@
     </tr>
     <tr>
         <td>
-            JDK (Development + tools) [-> [JRE(Java Class Library ) -> JVM(Java Virtual Machine)]]
+            JDK (Development + tools)
+             [-> [JRE(Java Class Library ) -> JVM(Java Virtual Machine)]]
         </td>
         <td>
             <img src="https://github.com/user-attachments/assets/78b59b0f-cfae-4454-a918-79c50274472a" width="100%" title="JDK Architecture"/>
@@ -37,122 +38,126 @@
 
 ## Compilation Flow
 
-    First.java ----> Java c (Compiler) (from jdk) ---> First.class (byte code)
-
+```
+First.java ----> Java c (Compiler) (from jdk) ---> First.class (byte code)
+```
 
 ## Reading Input from Keyboard
-    ```
-     import java.lang.*;   #default package
-     import java.util.*;   # for scanner class
+```
+  import java.lang.*;   #default package
+  import java.util.*;   # for scanner class
 
-      nextInt()
-      nextFloat()
-      nextDouble()
-      next()
-      nextLine()
+  nextInt()
+  nextFloat()
+  nextDouble()
+  next()
+  nextLine()
 
-      useRadix()
-    ```
+  useRadix()
+```
 
 ## Common CMD Commands
 
-    ```
-    javac file_name.java  #to compile
-    java file_name #to execute
-    javap java.util.Scanner # to get all the methods in the specified package
-    ```
+```
+javac file_name.java  #to compile
+java file_name #to execute
+javap java.util.Scanner # to get all the methods in the specified package
+```
 
 ## JVM Architecture
 
-    -> Memory
-      - **Heap** - where objects are created (dynamic)
-      - **stack** - where local variables and references are created
-      - **code section** - contains the code (class Loader loads the code, - **Interpreter/JIT** - just in time compilation will interpret the code)
+-> Memory
+  - **Heap** - where objects are created (dynamic)
+  - **stack** - where local variables and references are created
+  - **code section** - contains the code (class Loader loads the code, - **Interpreter/JIT** - just in time compilation will interpret the code)
 
 ## Reference Types
 
-    - parent reference, child reference
-    - Reference Type decides which variables are accessible.
-    - Object Type decides which methods are executed at runtime (polymorphism).
-    - Variables are shadowed, methods are overridden.
+- parent reference, child reference
+- Reference Type decides which variables are accessible.
+- Object Type decides which methods are executed at runtime (polymorphism).
+- Variables are shadowed, methods are overridden.
 
 ## OOP Concepts
 
-    - abstraction
-    - encapsulation
-    - inheritance : single, multilevel, hierarchical, multiple(through interface), hybrid
-    - polymorphism : static compile time (method overloading) , dynamic run time (method overriding)
+- **abstraction**
+- **encapsulation**
+- **inheritance** : single, multilevel, hierarchical, multiple(through interface), hybrid
+- **polymorphism** : static compile time (method overloading) , dynamic run time (method overriding)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Abstract Classes
 
-    - concrete class -> general class ex: class Parent {}
-    - abstract class - uses abstract keyword ex: abstract class Parent {}
-    - we cannot create an instance(object) of abstract class
-    - class that extends (inherits) abstract class will also be abstract 
-    - class to overcome abstract class then every method should be override
-    - abstract method - method which is not having body (undefined method)
-        ex: abstract void meth2();
-    - abstract class - class that having atleast one abstract method (that means class is also not completely defined)
+- concrete class -> general class ex: class Parent {}
+- abstract class - uses abstract keyword ex: abstract class Parent {}
+- we cannot create an instance(object) of abstract class
+- class that extends (inherits) abstract class will also be abstract 
+- class to overcome abstract class then every method should be override
+- abstract method - method which is not having body (undefined method)
+    ex: abstract void meth2();
+- abstract class - class that having atleast one abstract method (that means class is also not completely defined)
 
-    -  abstract class set some standards like ex:
-    ```bash
-      abstract class Hospital {
-        abstract void emergency();
-        abstract void appointment();
-        abstract void admit();
-        abstract void billing();
-        ...
-      } 
+- abstract class set some standards like ex:
+    
+```
+abstract class Hospital {
+  abstract void emergency();
+  abstract void appointment();
+  abstract void admit();
+  abstract void billing();
+  ...
+} 
 
-      class MyHospital extends Hospital {
-        MyHospital() {}
-        void emergency() {}
-        void appointment() {}
-        ...
-      }
+class MyHospital extends Hospital {
+  MyHospital() {}
+  void emergency() {}
+  void appointment() {}
+  ...
+}
 
-      Hospital h = new MyHospital();
-      // we make sure MyHospital only follow the standards that are set by Hospital as it can access the methods only defined in Hospital
-      ```
+Hospital h = new MyHospital();
+// we make sure MyHospital only follow the standards that are set by Hospital as it can access the methods only defined in Hospital
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Interfaces in Java
 
-    - by default every method is abstract 
-    - classes are extends
-    - interfaces are implements
-    - we cannot create object for interface
-    - In java a class can be exteded only from single class (multiple inheritance is not possible) but in interfances it can implements from so many interfaces
-    - interface is defined for achieving runtime polymorphism and dynamic method dispatch
-    - it can have static methods with body
+- by default every method is abstract 
+- classes are extends
+- interfaces are implements
+- we cannot create object for interface
+- In java a class can be exteded only from single class (multiple inheritance is not possible) but in interfances it can implements from so many interfaces
+- interface is defined for achieving runtime polymorphism and dynamic method dispatch
+- it can have static methods with body
 
-    - ex
-    
-    ```
-    interface Parent1 {
-        void meth1();
-      }
+- ex
 
-      interface Parent2 {
-        void meth1();
-      }
-        
-      class Child1 implements Parent1,Parent2 {
-        public void meth1() {
-          System.out.println("Child meth2");
-        } 
-      }
+```
+interface Parent1 {
+  void meth1();
+}
 
-      public class MyFirst {
+interface Parent2 {
+  void meth1();
+}
+  
+class Child1 implements Parent1,Parent2 {
+  public void meth1() {
+    System.out.println("Child meth2");
+  } 
+}
 
-        public static void main(String[] args) {
-          // TODO Auto-generated method stub
-          Child1 p = new Child1();
-          p.meth1();
-        }
-      }
-      ```
+public class MyFirst {
+
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    Child1 p = new Child1();
+    p.meth1();
+  }
+}
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
