@@ -27,9 +27,7 @@
     </tr>
     <tr>
         <td>
-            ```bash
             JDK (Development + tools) [-> [JRE(Java Class Library ) -> JVM(Java Virtual Machine)]]
-            ```
         </td>
         <td>
             <img src="https://github.com/user-attachments/assets/78b59b0f-cfae-4454-a918-79c50274472a" width="100%" title="JDK Architecture"/>
@@ -39,12 +37,11 @@
 
 ## Compilation Flow
 
- ```bash
     First.java ----> Java c (Compiler) (from jdk) ---> First.class (byte code)
-```
+
 
 ## Reading Input from Keyboard
-    ```bash
+    ```
      import java.lang.*;   #default package
      import java.util.*;   # for scanner class
 
@@ -59,7 +56,7 @@
 
 ## Common CMD Commands
 
-    ```bash
+    ```
     javac file_name.java  #to compile
     java file_name #to execute
     javap java.util.Scanner # to get all the methods in the specified package
@@ -67,10 +64,10 @@
 
 ## JVM Architecture
 
-    - Memory
-        - **Heap** - where objects are created (dynamic)
-        - **stack** - where local variables and references are created
-        - **code section** - contains the code (class Loader loads the code, - **Interpreter/JIT** - just in time compilation will interpret the code)
+    -> Memory
+      - **Heap** - where objects are created (dynamic)
+      - **stack** - where local variables and references are created
+      - **code section** - contains the code (class Loader loads the code, - **Interpreter/JIT** - just in time compilation will interpret the code)
 
 ## Reference Types
 
@@ -126,12 +123,13 @@
     - classes are extends
     - interfaces are implements
     - we cannot create object for interface
-    -  In java a class can be exteded only from single class (multiple inheritance is not possible) but in interfances it can implements from so many interfaces
+    - In java a class can be exteded only from single class (multiple inheritance is not possible) but in interfances it can implements from so many interfaces
     - interface is defined for achieving runtime polymorphism and dynamic method dispatch
     - it can have static methods with body
 
     - ex
-    ```bash
+    
+    ```
     interface Parent1 {
         void meth1();
       }
