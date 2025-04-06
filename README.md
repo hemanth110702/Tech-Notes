@@ -6,7 +6,7 @@
 <summary>Table of contents</summary>
 
 -   [Introduction](#introduction)
--   [Collections](#collections)
+-   [Java Utilities & Collections](#java-utilities-&-collections)
 
 </details>
 
@@ -23,7 +23,13 @@
   - [Interfaces in Java](./1.Introduction/README.md#interfaces-in-java)
 
 
-## Collections
+## Java Utilities & Collections
+
+  - [Common Utility Methods](./2.Java%20Utilities%20&%20Collections/README.md#common-utility-methods)
+  - [Java Arrays](./2.Java%20Utilities%20&%20Collections/README.md#java-arrays)
+  - [Collections](./2.Java%20Utilities%20&%20Collections/README.md#collections)
+
+
 
 
 <p align="right"><a href="#top">⬆️ Back to Top</a></p>
