@@ -114,64 +114,64 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
   </thead>
   <tbody>
     <tr>
-      <td>add(val)</td>
+      <td><code>add(val)/code></td>
       <td>Adds element to end of list</td>
-      <td>al.add(10);</td>
+      <td><code>al.add(10);</code></td>
     </tr>
     <tr>
-      <td>add(index, val)</td>
+      <td><code>add(index, val)</code></td>
       <td>Inserts element at specified index</td>
-      <td>al.add(1, 20);</td>
+      <td><code>al.add(1, 20);/code></td>
     </tr>
     <tr>
-      <td>get(index)</td>
+      <td><code>get(index)/code></td>
       <td>Returns element at index</td>
-      <td>al.get(0);</td>
+      <td><code>al.get(0);/code></td>
     </tr>
     <tr>
-      <td>set(index, val)</td>
+      <td><code>set(index, val)</code></td>
       <td>Updates element at index</td>
-      <td>al.set(0, 99);</td>
+      <td><code>al.set(0, 99);/code></td>
     </tr>
     <tr>
-      <td>remove(index)</td>
+      <td><code>remove(index)</code></td>
       <td>Removes element at index</td>
-      <td>al.remove(2);</td>
+      <td><code>al.remove(2);</code></td>
     </tr>
     <tr>
-      <td>contains(val)</td>
+      <td><code>contains(val)</code></td>
       <td>Checks if list contains element</td>
-      <td>al.contains(50);</td>
+      <td><code>al.contains(50);/code></td>
     </tr>
     <tr>
-      <td>size()</td>
+      <td><code>size()/code></td>
       <td>Returns number of elements</td>
-      <td>al.size();</td>
+      <td><code>al.size();/code></td>
     </tr>
     <tr>
-      <td>clear()</td>
+      <td><code>clear()</code></td>
       <td>Removes all elements</td>
-      <td>al.clear();</td>
+      <td><code>al.clear();</code></td>
     </tr>
     <tr>
-      <td>toArray()</td>
+      <td><code>toArray()</code></td>
       <td>Converts to array</td>
-      <td>al.toArray();</td>
+      <td><code>al.toArray();</code></td>
     </tr>
     <tr>
-      <td>isEmpty()</td>
+      <td><code>isEmpty()</code></td>
       <td>Checks if list is empty</td>
-      <td>al.isEmpty();</td>
+      <td><code>al.isEmpty();</code></td>
     </tr>
     <tr>
-      <td>indexOf(val)</td>
+      <td><code>indexOf(val)/code></td>
       <td>Returns index of first occurrence</td>
-      <td>al.indexOf(99);</td>
+      <td><code>al.indexOf(99);</code></td>
     </tr>
     <tr>
-      <td>lastIndexOf(val)</td>
+      <td><code>lastIndexOf(val)/code></td>
       <td>Returns index of last occurrence</td>
-      <td>al.lastIndexOf(99);</td>
+      <td><code>al.lastIndexOf(99);</code></td>
     </tr>
     <tr>
       <td><code>addAll(Arrays.asList(arr)) <br> addAll(list)</code></td>
@@ -297,62 +297,62 @@ HashMap<Integer,Integer> store = new HashMap<>();
   </thead>
   <tbody>
     <tr>
-      <td>put(key, value)</td>
+      <td><code>put(key, value)</code></td>
       <td>Inserts or updates a key-value pair</td>
-      <td>map.put(1, 100);</td>
+      <td><code>map.put(1, 100);/code></td>
     </tr>
     <tr>
-      <td>get(key)</td>
+      <td><code>get(key)/code></td>
       <td>Returns the value for the key, or null if not found</td>
-      <td>map.get(1);</td>
+      <td><code>map.get(1);</code></td>
     </tr>
     <tr>
-      <td>containsKey(key)</td>
+      <td><code>containsKey(key)/code></td>
       <td>Checks if the map contains the key</td>
-      <td>map.containsKey(1);</td>
+      <td><code>map.containsKey(1);</code></td>
     </tr>
     <tr>
-      <td>remove(key)</td>
+      <td><code>remove(key)</code></td>
       <td>Removes key-value pair for the given key</td>
-      <td>map.remove(1);</td>
+      <td><code>map.remove(1);/code></td>
     </tr>
     <tr>
-      <td>size()</td>
+      <td><code>size()/code></td>
       <td>Returns the number of key-value pairs</td>
-      <td>map.size();</td>
+      <td><code>map.size();</code></td>
     </tr>
     <tr>
-      <td>clear()</td>
+      <td><code>clear()</code></td>
       <td>Removes all mappings</td>
-      <td>map.clear();</td>
+      <td><code>map.clear();/code></td>
     </tr>
     <tr>
-      <td>isEmpty()</td>
+      <td><code>isEmpty()</code></td>
       <td>Checks if map is empty</td>
-      <td>map.isEmpty();</td>
+      <td><code>map.isEmpty();/code></td>
     </tr>
     <tr>
-      <td>keySet()</td>
+      <td><code>keySet()/code></td>
       <td>Returns a Set view of the keys</td>
-      <td>map.keySet();</td>
+      <td><code>map.keySet();</code></td>
     </tr>
     <tr>
-      <td>values()</td>
+      <td><code>values()/code></td>
       <td>Returns a Collection view of values</td>
-      <td>map.values();</td>
+      <td><code>map.values();</code></td>
     </tr>
     <tr>
-      <td>entrySet()</td>
+      <td><code>entrySet()/code></td>
       <td>Returns a Set of key-value pairs</td>
-      <td>map.entrySet();</td>
+      <td><code>map.entrySet();</code></td>
     </tr>
     <tr>
-      <td>for-each loop</td>
+      <td><code>for-each loop</code></td>
       <td>Iterate over entries</td>
-      <td>
+      <td><code>
         for (Map.Entry&lt;Integer, Integer&gt; e : map.entrySet()) {<br>
         &nbsp;&nbsp;// use e.getKey(), e.getValue()<br>
-        }
+        }</code>
       </td>
     </tr>
   </tbody>
