@@ -44,10 +44,81 @@ int ans[] = {1,3,34,5};
 return new int[] {1,2,3};
 ```
 
+- **methods**
+<table border="1" cellspacing="0" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Method / Feature</th>
+      <th>Description</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>array.length</code></td>
+      <td>Returns size of array</td>
+      <td><code>arr.length</code></td>
+    </tr>
+    <tr>
+      <td><code>Arrays.sort(arr)</code></td>
+      <td>Sorts array in ascending order</td>
+      <td><code>Arrays.sort(arr)</code></td>
+    </tr>
+    <tr>
+      <td><code>Arrays.fill(arr, val)</code></td>
+      <td>Fills array with given value</td>
+      <td><code>Arrays.fill(arr, 0)</code></td>
+    </tr>
+    <tr>
+      <td><code>Arrays.equals(arr1, arr2)</code></td>
+      <td>Checks if two arrays are equal</td>
+      <td><code>Arrays.equals(a, b)</code></td>
+    </tr>
+    <tr>
+      <td><code>Arrays.copyOf(arr, newLength)</code></td>
+      <td>Copies array to new array of given length</td>
+      <td><code>int[] b = Arrays.copyOf(a, 5)</code></td>
+    </tr>
+    <tr>
+      <td><code>Arrays.copyOfRange(arr, s, e)</code></td>
+      <td>Copies range <code>[start, end)</code> to new array</td>
+      <td><code>Arrays.copyOfRange(a, 1, 4)</code></td>
+    </tr>
+    <tr>
+      <td><code>Arrays.toString(arr)</code></td>
+      <td>Converts array to string</td>
+      <td><code>System.out.println(Arrays.toString(arr))</code></td>
+    </tr>
+    <tr>
+      <td><code>Arrays.binarySearch(arr, key)</code></td>
+      <td>Binary search (sorted array only)</td>
+      <td><code>Arrays.binarySearch(arr, 5)</code></td>
+    </tr>
+    <tr>
+      <td><code>Arrays.stream(arr)</code></td>
+      <td>Streams array for functional ops (Java 8+)</td>
+      <td><code>Arrays.stream(arr).sum()</code></td>
+    </tr>
+    <tr>
+      <td><code>IntStream.of(arr).max().getAsInt()</code></td>
+      <td>Max value using stream (Java 8+)</td>
+      <td><code>IntStream.of(arr).max().getAsInt()</code></td>
+    </tr>
+    <tr>
+      <td><code>System.arraycopy(src, s, dest, d, l)</code></td>
+      <td>Manual array copy from <code>src</code> to <code>dest</code></td>
+      <td><code>System.arraycopy(a, 0, b, 0, a.length)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<hr/>
 
 ## Collections
 
-### ArrayList
+## ArrayList
 -   dynamic array, not synchronized not suitable when multiple threads are accessing it simultaneously
 
 - **declaration**
@@ -162,8 +233,9 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<hr/>
 
-### Vector
+## Vector
 -   synchronized, thread-safe, but slower than ArrayList
 
 -   **declaration**
@@ -248,8 +320,10 @@ Vector<Integer> v = new Vector<Integer>();
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<hr/>
 
-### HashMap
+
+## HashMap
 - A HashMap is a data structure that stores key-value pairs.
 
 - **declaration**
@@ -329,4 +403,6 @@ HashMap<Integer,Integer> store = new HashMap<>();
   </tbody>
 </table>
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
+<hr/>
