@@ -36,11 +36,15 @@
     </tr>
 </table>
 
+<hr/>
+
 ## Compilation Flow
 
 ```
 First.java ----> Java c (Compiler) (from jdk) ---> First.class (byte code)
 ```
+
+<hr/>
 
 ## Reading Input from Keyboard
 ```
@@ -56,6 +60,8 @@ First.java ----> Java c (Compiler) (from jdk) ---> First.class (byte code)
   useRadix()
 ```
 
+<hr/>
+
 ## Common CMD Commands
 
 ```
@@ -63,6 +69,7 @@ javac file_name.java  #to compile
 java file_name #to execute
 javap java.util.Scanner # to get all the methods in the specified package
 ```
+<hr/>
 
 ## JVM Architecture
 
@@ -71,12 +78,16 @@ javap java.util.Scanner # to get all the methods in the specified package
   - **stack** - where local variables and references are created
   - **code section** - contains the code (class Loader loads the code, - **Interpreter/JIT** - just in time compilation will interpret the code)
 
+<hr/>
+
 ## Reference Types
 
 - parent reference, child reference
 - Reference Type decides which variables are accessible.
 - Object Type decides which methods are executed at runtime (polymorphism).
 - Variables are shadowed, methods are overridden.
+
+<hr/>
 
 ## OOP Concepts
 
@@ -86,6 +97,8 @@ javap java.util.Scanner # to get all the methods in the specified package
 - **polymorphism** : static compile time (method overloading) , dynamic run time (method overriding)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+<hr/>
 
 ## Abstract Classes
 
@@ -121,6 +134,8 @@ Hospital h = new MyHospital();
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+<hr/>
 
 ## Interfaces in Java
 
@@ -161,4 +176,5 @@ public class MyFirst {
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<hr/>
 

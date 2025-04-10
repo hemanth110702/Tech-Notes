@@ -32,19 +32,19 @@ Integer.parseInt("1101", 2) // 13 binary to decimal
 
 
 ## Java Arrays
--   **declaration**
+-   **Declaration**
 ```
 int[] ans = new int [5];
 int[] ans = {1,3,34,5};
 int ans[] = {1,3,34,5};
 ```
 
-- **static return**
+- **Static return**
 ```
 return new int[] {1,2,3};
 ```
 
-- **methods**
+- **Methods**
 <table border="1" cellspacing="0" cellpadding="8">
   <thead>
     <tr>
@@ -65,24 +65,9 @@ return new int[] {1,2,3};
       <td><code>Arrays.sort(arr)</code></td>
     </tr>
     <tr>
-      <td><code>Arrays.fill(arr, val)</code></td>
-      <td>Fills array with given value</td>
-      <td><code>Arrays.fill(arr, 0)</code></td>
-    </tr>
-    <tr>
       <td><code>Arrays.equals(arr1, arr2)</code></td>
       <td>Checks if two arrays are equal</td>
       <td><code>Arrays.equals(a, b)</code></td>
-    </tr>
-    <tr>
-      <td><code>Arrays.copyOf(arr, newLength)</code></td>
-      <td>Copies array to new array of given length</td>
-      <td><code>int[] b = Arrays.copyOf(a, 5)</code></td>
-    </tr>
-    <tr>
-      <td><code>Arrays.copyOfRange(arr, s, e)</code></td>
-      <td>Copies range <code>[start, end)</code> to new array</td>
-      <td><code>Arrays.copyOfRange(a, 1, 4)</code></td>
     </tr>
     <tr>
       <td><code>Arrays.toString(arr)</code></td>
@@ -90,24 +75,14 @@ return new int[] {1,2,3};
       <td><code>System.out.println(Arrays.toString(arr))</code></td>
     </tr>
     <tr>
-      <td><code>Arrays.binarySearch(arr, key)</code></td>
-      <td>Binary search (sorted array only)</td>
-      <td><code>Arrays.binarySearch(arr, 5)</code></td>
-    </tr>
-    <tr>
       <td><code>Arrays.stream(arr)</code></td>
       <td>Streams array for functional ops (Java 8+)</td>
       <td><code>Arrays.stream(arr).sum()</code></td>
     </tr>
     <tr>
-      <td><code>IntStream.of(arr).max().getAsInt()</code></td>
-      <td>Max value using stream (Java 8+)</td>
-      <td><code>IntStream.of(arr).max().getAsInt()</code></td>
-    </tr>
-    <tr>
-      <td><code>System.arraycopy(src, s, dest, d, l)</code></td>
-      <td>Manual array copy from <code>src</code> to <code>dest</code></td>
-      <td><code>System.arraycopy(a, 0, b, 0, a.length)</code></td>
+      <td><code>Arrays.stream(arr)</code></td>
+      <td>Streams array for functional ops (Java 8+)</td>
+      <td><code>Arrays.stream(arr).sum()</code></td>
     </tr>
   </tbody>
 </table>
@@ -121,14 +96,14 @@ return new int[] {1,2,3};
 ## ArrayList
 -   dynamic array, not synchronized not suitable when multiple threads are accessing it simultaneously
 
-- **declaration**
+- **Declaration**
 ```
 ArrayList<int[]> ans = new ArrayList<int[]>(); we should pass non primitive data type
 ArrayList<Integer> al = new ArrayList<>(10); we added 10 as capacity
 ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
 ```
 
-- **methods**
+- **Methods**
 <table border="1" cellspacing="0" cellpadding="8">
   <thead>
     <tr>
@@ -198,37 +173,17 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
       <td>Returns index of last occurrence</td>
       <td>al.lastIndexOf(99);</td>
     </tr>
+    <tr>
+      <td><code>addAll(Arrays.asList(arr)) <br> addAll(list)</code></td>
+      <td>Adds all elements of array to an ArrayList</td>
+      <td><code>ArrayList<Integer> list.addAll(Arrays.asList(arr)); <br> list.addAll(list2); </code></td>
+    </tr>
+    <tr>
+      <td><code>al.stream().mapToInt(i -> i).toArray()</code></td>
+      <td>Converts ArrayList <Integer> to int[] using streams</td>
+      <td><code>int[] arr = al.stream().mapToInt(i -> i).toArray();</code></td>
+  </tr>
   </tbody>
-</table>
-
-
-- **Complexity of Java ArrayList**
-<table>
-    <tr>
-        <th>Operation</th>
-        <th>Time Complexity</th>
-        <th>Space Complexity</th>
-    </tr>
-    <tr>
-        <td>Inserting Element in ArrayList</td>
-        <td>O(1)</td>
-        <td>O(N)</td>
-    </tr>
-    <tr>
-        <td>Removing Element from ArrayList</td>
-        <td>O(N)</td>
-        <td>O(1)</td>
-    </tr>
-    <tr>
-        <td>Traversing Elements in ArrayList</td>
-        <td>O(N)</td>
-        <td>O(N)</td>
-    </tr>
-    <tr>
-        <td>Replacing Elements in ArrayList</td>
-        <td>O(1)</td>
-        <td>O(1)</td>
-    </tr>
 </table>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -238,7 +193,7 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
 ## Vector
 -   synchronized, thread-safe, but slower than ArrayList
 
--   **declaration**
+-   **Declaration**
 ```
 Vector<Integer> v = new Vector<Integer>();
 ```
@@ -326,12 +281,12 @@ Vector<Integer> v = new Vector<Integer>();
 ## HashMap
 - A HashMap is a data structure that stores key-value pairs.
 
-- **declaration**
+- **Declaration**
 ```
 HashMap<Integer,Integer> store = new HashMap<>();
 ```
 
-- **methods**
+- **Methods**
 <table border="1" cellspacing="0" cellpadding="8">
   <thead>
     <tr>
