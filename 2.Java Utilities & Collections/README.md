@@ -30,6 +30,14 @@ Integer.toBinaryString(1) // "1" convert integer to binary string
 Integer.parseInt("1101", 2) // 13 binary to decimal
 ```
 
+- Math Class
+
+```
+Math.max(1, 2) // 2
+Math.floor()
+Math.ceil()
+```
+
 
 ## Java Arrays
 -   **Declaration**
@@ -73,11 +81,6 @@ return new int[] {1,2,3};
       <td><code>Arrays.toString(arr)</code></td>
       <td>Converts array to string</td>
       <td><code>System.out.println(Arrays.toString(arr))</code></td>
-    </tr>
-    <tr>
-      <td><code>Arrays.stream(arr)</code></td>
-      <td>Streams array for functional ops (Java 8+)</td>
-      <td><code>Arrays.stream(arr).sum()</code></td>
     </tr>
     <tr>
       <td><code>Arrays.stream(arr)</code></td>
