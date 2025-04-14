@@ -186,6 +186,11 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
       <td>Converts ArrayList <Integer> to int[] using streams</td>
       <td><code>int[] arr = al.stream().mapToInt(i -> i).toArray();</code></td>
   </tr>
+    <tr>
+      <td><code>Collections.reverse(list_name)</code></td>
+      <td>reverses the list</td>
+      <td><code>Collections.reverse(list);</code></td>
+  </tr>
   </tbody>
 </table>
 

@@ -1,35 +1,15 @@
-<div id="top"></div>
+# 📚 Tech Notes by Hemanth
 
-# My Java Notes
+Welcome to my personal tech notes repo 🧠⚡  
+These notes are built for **quick recall, clarity, and core understanding** – not like Wikipedia dumps.  
+If I need depth, I dive into trusted blogs, docs, or tutorials. These notes help me **revisit important concepts fast** and **adapt to dynamic work or learning**.
 
-<details>
-<summary>Table of contents</summary>
+---
 
--   [Introduction](#introduction)
--   [Java Utilities & Collections](#java-utilities-&-collections)
+### 🔹 Active Topics
+- [Java Notes](./Java/README.md)
 
-</details>
+> More folders will be added as I explore new technologies 🚀
 
-## Introduction
+---
 
-  - [JDK Architecture](./1.Introduction/README.md#jdk-architecture)
-  - [Compilation Flow](./1.Introduction/README.md#compilation-flow)
-  - [Reading Input from Keyboard](./1.Introduction/README.md#reading-input-from-keyboard)
-  - [Common CMD Commands](./1.Introduction/README.md#common-cmd-commands)
-  - [JVM Architecture](./1.Introduction/README.md#jvm-architecture)
-  - [Reference Types](./1.Introduction/README.md#reference-types)
-  - [OOP Concepts](./1.Introduction/README.md#oop-concepts)
-  - [Abstract Classes](./1.Introduction/README.md#abstract-classes)
-  - [Interfaces in Java](./1.Introduction/README.md#interfaces-in-java)
-
-
-## Java Utilities & Collections
-
-  - [Common Utility Methods](./2.Java%20Utilities%20&%20Collections/README.md#common-utility-methods)
-  - [Java Arrays](./2.Java%20Utilities%20&%20Collections/README.md#java-arrays)
-  - [Collections](./2.Java%20Utilities%20&%20Collections/README.md#collections)
-
-
-
-
-<p align="right"><a href="#top">⬆️ Back to Top</a></p>
