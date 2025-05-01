@@ -8,6 +8,7 @@ If I need depth, I dive into trusted blogs, docs, or tutorials. These notes help
 
 ### 🔹 Active Topics
 - [Java Notes](./Java/README.md)
+- [DSA Notes](./DSA/README.md)
 
 > More folders will be added as I explore new technologies 🚀
 
