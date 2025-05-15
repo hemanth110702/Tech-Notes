@@ -124,17 +124,17 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
     <tr>
       <td><code>add(index, val)</code></td>
       <td>Inserts element at specified index</td>
-      <td><code>al.add(1, 20);/code></td>
+      <td><code>al.add(1, 20);</code></td>
     </tr>
     <tr>
       <td><code>get(index)/code></td>
       <td>Returns element at index</td>
-      <td><code>al.get(0);/code></td>
+      <td><code>al.get(0);</code></td>
     </tr>
     <tr>
       <td><code>set(index, val)</code></td>
       <td>Updates element at index</td>
-      <td><code>al.set(0, 99);/code></td>
+      <td><code>al.set(0, 99);</code></td>
     </tr>
     <tr>
       <td><code>remove(index)</code></td>
@@ -144,12 +144,12 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
     <tr>
       <td><code>contains(val)</code></td>
       <td>Checks if list contains element</td>
-      <td><code>al.contains(50);/code></td>
+      <td><code>al.contains(50);</code></td>
     </tr>
     <tr>
       <td><code>size()/code></td>
       <td>Returns number of elements</td>
-      <td><code>al.size();/code></td>
+      <td><code>al.size();</code></td>
     </tr>
     <tr>
       <td><code>clear()</code></td>
@@ -307,7 +307,7 @@ HashMap<Integer,Integer> store = new HashMap<>();
     <tr>
       <td><code>put(key, value)</code></td>
       <td>Inserts or updates a key-value pair</td>
-      <td><code>map.put(1, 100);/code></td>
+      <td><code>map.put(1, 100);</code></td>
     </tr>
     <tr>
       <td><code>get(key)/code></td>
@@ -322,7 +322,7 @@ HashMap<Integer,Integer> store = new HashMap<>();
     <tr>
       <td><code>remove(key)</code></td>
       <td>Removes key-value pair for the given key</td>
-      <td><code>map.remove(1);/code></td>
+      <td><code>map.remove(1);</code></td>
     </tr>
     <tr>
       <td><code>size()/code></td>
@@ -332,12 +332,12 @@ HashMap<Integer,Integer> store = new HashMap<>();
     <tr>
       <td><code>clear()</code></td>
       <td>Removes all mappings</td>
-      <td><code>map.clear();/code></td>
+      <td><code>map.clear();</code></td>
     </tr>
     <tr>
       <td><code>isEmpty()</code></td>
       <td>Checks if map is empty</td>
-      <td><code>map.isEmpty();/code></td>
+      <td><code>map.isEmpty();</code></td>
     </tr>
     <tr>
       <td><code>keySet()/code></td>
