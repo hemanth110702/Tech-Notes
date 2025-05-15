@@ -117,7 +117,7 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
   </thead>
   <tbody>
     <tr>
-      <td><code>add(val)/code></td>
+      <td><code>add(val)</code></td>
       <td>Adds element to end of list</td>
       <td><code>al.add(10);</code></td>
     </tr>
@@ -127,7 +127,7 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
       <td><code>al.add(1, 20);</code></td>
     </tr>
     <tr>
-      <td><code>get(index)/code></td>
+      <td><code>get(index)</code></td>
       <td>Returns element at index</td>
       <td><code>al.get(0);</code></td>
     </tr>
@@ -167,12 +167,12 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
       <td><code>al.isEmpty();</code></td>
     </tr>
     <tr>
-      <td><code>indexOf(val)/code></td>
+      <td><code>indexOf(val)</code></td>
       <td>Returns index of first occurrence</td>
       <td><code>al.indexOf(99);</code></td>
     </tr>
     <tr>
-      <td><code>lastIndexOf(val)/code></td>
+      <td><code>lastIndexOf(val)</code></td>
       <td>Returns index of last occurrence</td>
       <td><code>al.lastIndexOf(99);</code></td>
     </tr>
@@ -310,12 +310,12 @@ HashMap<Integer,Integer> store = new HashMap<>();
       <td><code>map.put(1, 100);</code></td>
     </tr>
     <tr>
-      <td><code>get(key)/code></td>
+      <td><code>get(key)</code></td>
       <td>Returns the value for the key, or null if not found</td>
       <td><code>map.get(1);</code></td>
     </tr>
     <tr>
-      <td><code>containsKey(key)/code></td>
+      <td><code>containsKey(key)</code></td>
       <td>Checks if the map contains the key</td>
       <td><code>map.containsKey(1);</code></td>
     </tr>
@@ -325,7 +325,7 @@ HashMap<Integer,Integer> store = new HashMap<>();
       <td><code>map.remove(1);</code></td>
     </tr>
     <tr>
-      <td><code>size()/code></td>
+      <td><code>size()</code></td>
       <td>Returns the number of key-value pairs</td>
       <td><code>map.size();</code></td>
     </tr>
@@ -340,17 +340,17 @@ HashMap<Integer,Integer> store = new HashMap<>();
       <td><code>map.isEmpty();</code></td>
     </tr>
     <tr>
-      <td><code>keySet()/code></td>
+      <td><code>keySet()</code></td>
       <td>Returns a Set view of the keys</td>
       <td><code>map.keySet();</code></td>
     </tr>
     <tr>
-      <td><code>values()/code></td>
+      <td><code>values()</code></td>
       <td>Returns a Collection view of values</td>
       <td><code>map.values();</code></td>
     </tr>
     <tr>
-      <td><code>entrySet()/code></td>
+      <td><code>entrySet()</code></td>
       <td>Returns a Set of key-value pairs</td>
       <td><code>map.entrySet();</code></td>
     </tr>
