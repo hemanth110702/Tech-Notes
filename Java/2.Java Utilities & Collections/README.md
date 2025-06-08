@@ -2,16 +2,15 @@
 
 # Java Utilities & Collections
 
-
 <details>
 <summary>Table of contents</summary>
 
 - [Common Utility Methods](#common-utility-methods)
 - [Java Arrays](#java-arrays)
 - [Collections](#collections)
-    - [ArrayList](#arraylist)
-    - [Vector](#vector)
-    - [HashMap](#hashmap)
+  - [ArrayList](#arraylist)
+  - [Vector](#vector)
+  - [HashMap](#hashmap)
 
 </details>
 
@@ -26,7 +25,7 @@
 - Integer Class
 
 ```
-Integer.toBinaryString(1) // "1" convert integer to binary string 
+Integer.toBinaryString(1) // "1" convert integer to binary string
 Integer.parseInt("1101", 2) // 13 binary to decimal
 ```
 
@@ -38,9 +37,10 @@ Math.floor()
 Math.ceil()
 ```
 
-
 ## Java Arrays
--   **Declaration**
+
+- **Declaration**
+
 ```
 int[] ans = new int [5];
 int[] ans = {1,3,34,5};
@@ -48,6 +48,7 @@ int ans[] = {1,3,34,5};
 ```
 
 - **Static return**
+
 ```
 return new int[] {1,2,3};
 ```
@@ -97,9 +98,11 @@ return new int[] {1,2,3};
 ## Collections
 
 ## ArrayList
--   dynamic array, not synchronized not suitable when multiple threads are accessing it simultaneously
+
+- dynamic array, not synchronized not suitable when multiple threads are accessing it simultaneously
 
 - **Declaration**
+
 ```
 ArrayList<int[]> ans = new ArrayList<int[]>(); we should pass non primitive data type
 ArrayList<Integer> al = new ArrayList<>(10); we added 10 as capacity
@@ -199,9 +202,11 @@ ArrayList <Integer> al2 = new ArrayList<>(Arrays.asList(1,2,3));
 <hr/>
 
 ## Vector
--   synchronized, thread-safe, but slower than ArrayList
 
--   **Declaration**
+- synchronized, thread-safe, but slower than ArrayList
+
+- **Declaration**
+
 ```
 Vector<Integer> v = new Vector<Integer>();
 ```
@@ -285,11 +290,12 @@ Vector<Integer> v = new Vector<Integer>();
 
 <hr/>
 
-
 ## HashMap
+
 - A HashMap is a data structure that stores key-value pairs.
 
 - **Declaration**
+
 ```
 HashMap<Integer,Integer> store = new HashMap<>();
 ```
@@ -357,10 +363,25 @@ HashMap<Integer,Integer> store = new HashMap<>();
     <tr>
       <td><code>for-each loop</code></td>
       <td>Iterate over entries</td>
-      <td><code>
-        for (Map.Entry&lt;Integer, Integer&gt; e : map.entrySet()) {<br>
-        &nbsp;&nbsp;// use e.getKey(), e.getValue()<br>
-        }</code>
+      <td>
+      <code>
+        for (Map.Entry&lt;Integer, Integer&gt; e : map.entrySet())<br>
+        &nbsp;&nbsp;// use e.getKey(), e.getValue()
+        </code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>sort</code></td>
+      <td>Sorting based on keys/values</td>
+      <td>
+        <code>
+          HashMap<Integer, Integer> store = new HashMap<>();
+          List<Map.Entry<Integer, Integer>> list = new ArrayList<>(store.entrySet());
+          list.sort((a,b) -&gt b.getValue() - a.getValue()); // getKey() for key-based sorting
+          for(int i=0; i&lt3; i++) {
+            sm+= list.get(i).getValue();
+          }
+        </code>
       </td>
     </tr>
   </tbody>
