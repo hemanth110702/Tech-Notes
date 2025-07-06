@@ -377,7 +377,8 @@ HashMap<Integer,Integer> store = new HashMap<>();
         <code>
           HashMap<Integer, Integer> store = new HashMap<>();
           List<Map.Entry<Integer, Integer>> list = new ArrayList<>(store.entrySet());
-          list.sort((a,b) -&gt b.getValue() - a.getValue()); // getKey() for key-based sorting
+          list.sort((a,b) -&gt b.getValue() - a.getValue()); 
+          // getKey() for key-based sorting
           for(int i=0; i&lt3; i++) {
             sm+= list.get(i).getValue();
           }
