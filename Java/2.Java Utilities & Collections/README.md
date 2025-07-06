@@ -37,6 +37,16 @@ Math.floor()
 Math.ceil()
 ```
 
+- Character Class
+
+```
+Character.isLetter('A'); // true
+Character.isDigit('5'); // true
+Character.toLowerCase('A'); // 'a'
+Character.toUpperCase('z'); // 'Z'
+Character.getType('A'); // 1 - returns int representing character type
+```
+
 ## Java Arrays
 
 - **Declaration**

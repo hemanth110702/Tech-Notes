@@ -8,7 +8,7 @@
 - [Patterns](#patterns)
 -   [Tricks](#tricks)
 -   [Arrays](#arrays)
--   [Linked List]
+-   [Linked List](#linked-list)
 
 </details>
 
