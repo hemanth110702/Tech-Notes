@@ -51,6 +51,8 @@ First.java ----> Java c (Compiler) (from jdk) ---> First.class (byte code)
   import java.lang.*;   #default package
   import java.util.*;   # for scanner class
 
+  Scanner sc = new Scanner(System.in); // We provide input stream as param - System.in
+
   nextInt()
   nextFloat()
   nextDouble()
