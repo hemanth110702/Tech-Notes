@@ -10,7 +10,7 @@
 
 </details>
 
-## Introduction
+## [Introduction](./1.Introduction/README.md)
 
   - [JDK Architecture](./1.Introduction/README.md#jdk-architecture)
   - [Compilation Flow](./1.Introduction/README.md#compilation-flow)
@@ -23,7 +23,7 @@
   - [Interfaces in Java](./1.Introduction/README.md#interfaces-in-java)
 
 
-## Java Utilities & Collections
+## [Java Utilities & Collections](./2.Java%20Utilities%20&%20Collections/README.md)
 
   - [Common Utility Methods](./2.Java%20Utilities%20&%20Collections/README.md#common-utility-methods)
   - [Java Arrays](./2.Java%20Utilities%20&%20Collections/README.md#java-arrays)
