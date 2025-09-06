@@ -17,9 +17,33 @@
 ## Common Utility Methods
 
 - String Class
+  - it is a reference type
+  - strings are immutable (we cant change the string)
+  - any methods that changes a string returns a new string
+
 
 ```
-"0".repeat(9); // Repeats "0" 9 times → "000000000"
+package com.decider;
+
+public class Main {
+    public static void main(String[] args) {
+//      String message = new String("Hello World"); // redundant
+        String message = "   Hello World" + "!!  ";
+        System.out.println(message.trim()); //op:Hello World!!
+        System.out.println(message.toLowerCase()); //op:   hello world!!
+        System.out.println(message.toUpperCase()); //op:   HELLO WORLD!!
+        System.out.println(message.replaceAll("!!", "**")); //op:   Hello World**
+        System.out.println(message.indexOf("o")); //op:7
+        System.out.println(message.indexOf("Hello")); //op:3
+        System.out.println(message.indexOf("sky")); //op:-1
+        System.out.println(message.length()); //op:18
+        System.out.println(message.startsWith("  ")); //op:true
+        System.out.println(message.endsWith("  ")); //op:true
+        System.out.println(message); //op:   Hello World!!
+        String test = "0".repeat(9); //op:000000000
+        System.out.println(test);
+    }
+}
 ```
 
 - Integer Class

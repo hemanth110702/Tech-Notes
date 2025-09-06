@@ -6,11 +6,14 @@
 
 <summary>Table of contents</summary>
 
-- [JDK Architecture](#jdk-structure)
+- [JDK Architecture](#jdk-architecture)
 - [Compilation Flow](#compilation-flow)
 - [Reading Input from Keyboard](#reading-input-from-keyboard)
 - [Common CMD Commands](#common-cmd-commands)
 - [JVM Architecture](#jvm-architecture)
+- [Primitive Types](#primitive-types)
+- [Primitive Types vs Reference Types](#primitive-types-vs-reference-types)
+- [Parameters vs Arguments](#parameters-vs-arguments)
 - [Reference Types](#reference-types)
 - [OOP Concepts](#oops-concepts)
 - [Abstract Classes](#abstract-classes)
@@ -41,7 +44,22 @@
 ## Compilation Flow
 
 ```
-First.java ----> Java c (Compiler) (from jdk) ---> First.class (byte code)
+First.jav (Source Code) ----> Java c (Java Compiler - from jdk) ---> First.class (Byte code)
+
+We can run the Java Byte code (*.class file) on any system had JRE (Java Runtime Environment)
+
+JRE contains JVM (Java Virtual Machine)
+
+We can download Java Virtual Machine for so many systems in their native
+
+Byte Code (*.class) -> JVM -> Native Code (Windows, mac,..)
+
+So, Java is platform independent
+
+
+**Java compilation:** javac Filename.java
+**Run Java Program1:** java com.decider.Main (if class was inside a package)
+**Run Java Program2:** java Main (if class was not inside a package)
 ```
 
 <hr/>
@@ -81,6 +99,131 @@ javap java.util.Scanner # to get all the methods in the specified package
   - **code section** - contains the code (class Loader loads the code, - **Interpreter/JIT** - just in time compilation will interpret the code)
 
 <hr/>
+
+## Primitive Types
+
+- **Primitive**: For storing simple values
+- **Reference**: For storing complex objects
+
+<table>
+    <tr>
+        <th colspan="3">Primitive Types</th>
+    </tr>
+    <tr>
+        <th>Type</th>
+        <th>Bytes</th>
+        <th>Range</th>
+    </tr>
+    <tr>
+        <td><b>byte</b></td>
+        <td>1</td>
+        <td>[-128,127]</td>
+    </tr>
+    <tr>
+        <td><b>short</b></td>
+        <td>2</td>
+        <td>[-32K,32K]</td>
+    </tr>
+    <tr>
+        <td><b>int</b></td>
+        <td>4</td>
+        <td>[-2B,2B]</td>
+    </tr>
+    <tr>
+        <td><b>long</b></td>
+        <td>8</td>
+        <td>[-2B,2B]</td>
+    </tr>
+    <tr>
+        <td><b>float</b></td>
+        <td>4</td>
+        <td>[-2B,2B]</td>
+    </tr>
+    <tr>
+        <td><b>double</b></td>
+        <td>8</td>
+        <td>[-2B,2B]</td>
+    </tr>
+    <tr>
+        <td><b>char</b></td>
+        <td>2</td>
+        <td>A,B,C,..</td>
+    </tr>
+    <tr>
+        <td><b>boolean</b></td>
+        <td>1</td>
+        <td>true/false</td>
+    </tr>
+</table>
+
+Code:
+```
+package com.decider;
+
+public class Main {
+    public static void main(String[] args) {
+        byte age = 23;
+        short yearOfBirth = 2002;
+        int favoriteNumber = 11;
+        long viewsCount = 3_123_456_789L;
+        float playerRating = 9.99f;
+        double price = 9_999_999_999.99;
+        boolean isEligible = true;
+        char initial = 'M';
+    }
+}
+```
+
+- when declaring primitive types we don't need to declare memory, memory is allocated and released by JRE automatically
+- for reference types we need to always allocate memory, no need to release memory JRE will take care of that. (we use new keyword)
+
+```
+package com.decider;
+
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        byte age = 23;
+        Date now = new Date();
+        System.out.println(now); //shortcut: sout + tab
+    }
+}
+```
+
+<hr/>
+
+## Primitive Types vs Reference Types
+
+```
+package com.decider;
+
+import java.awt.*;
+
+public class Main {
+    public static void main(String[] args) {
+        byte a = 30;
+        byte b = a;
+        a = 1;
+        System.out.println(a + " " + b); // 1 30
+        Point point1 = new Point(1, 2);
+        Point point2 = point1;
+        point1.x = 11;
+        System.out.println(point1 + " " + point2); // java.awt.Point[x=11,y=2] java.awt.Point[x=11,y=2]
+    }
+}
+```
+
+<hr/>
+
+## Parameters vs Arguments
+
+- Parameters are the holes that we define in the method
+- Arguments are the actual values that we pass to the method
+
+<hr/>
+
+
 
 ## Reference Types
 
