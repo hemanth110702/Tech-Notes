@@ -16,7 +16,7 @@
 
 ## Common Utility Methods
 
-- String Class
+### String Class
   - it is a reference type
   - strings are immutable (we cant change the string)
   - any methods that changes a string returns a new string
@@ -46,14 +46,15 @@ public class Main {
 }
 ```
 
-- Integer Class
+### Integer Class
 
 ```
 Integer.toBinaryString(1) // "1" convert integer to binary string
 Integer.parseInt("1101", 2) // 13 binary to decimal
+Integer.parseInt("11") // converts string to number
 ```
 
-- Math Class
+### Math Class
 
 ```
 Math.max(1, 2) // 2
@@ -61,7 +62,7 @@ Math.floor()
 Math.ceil()
 ```
 
-- Character Class
+### Character Class
 
 ```
 Character.isLetter('A'); // true
@@ -71,14 +72,63 @@ Character.toUpperCase('z'); // 'Z'
 Character.getType('A'); // 1 - returns int representing character type
 ```
 
-## Java Arrays
-
-- **Declaration**
+### Escape Sequence
 
 ```
-int[] ans = new int [5];
-int[] ans = {1,3,34,5};
-int ans[] = {1,3,34,5};
+String s = "I'm \n \"Escape Sequence\" \t C:\\Windows";
+System.out.println(s);
+```
+
+### Constants
+
+- to declare a constant we user final keyword
+
+```
+final float pi = 3.14F; // if we don't declare F it is seen as decimal
+System.out.println("Pi is " + pi); // Pi is 3.14
+```
+
+### Casting
+
+- Implicit Casting (no data loss): byte > Short > int > long > float > double
+```
+short x = 1;
+int y = x + 1; // implicit casting
+System.out.println(y);
+```
+
+- Explicit Casting (data loss): double > float > long > int > char > short > byte
+```
+double x = 1.1;
+int y = (int)x + 2; // Explicit casting
+System.out.println(y); // 3
+```
+
+## Java Arrays
+
+- **method overloading:** multiple methods with the same name but different parameter (Ex: Arrays.toString())
+- **method overridding:** the method of the subclass class overrides the method of the superclass
+
+```
+Single Dimension Array:
+
+    int[] numbers = new int[5]; // declaration - uninitialized values: 0
+    int[] numbers = new int[]{3,4}; // declaration and initialization (Shouldn't declare the size to initialize)
+    int[] numbers = {2,3,4,1,5};
+    System.out.println(Arrays.toString(numbers)); // [2, 3, 4, 1, 5]
+    Arrays.sort(numbers);
+    System.out.println(Arrays.toString(numbers)); // [1, 2, 3, 4, 5]
+
+Multi Dimension Array:
+
+    int[][] numbers = new int[][]{{1,2,3},{0,0,0}};
+    System.out.println(Arrays.deepToString(numbers)); // [[1, 2, 3], [0, 0, 0]]
+    int[][] multiArray = {{1,2},{0,0,0}};
+    System.out.println(Arrays.deepToString(multiArray)); // [[1, 2], [0, 0, 0]]
+    int[][] multiArray2 = new int[2][3];
+    System.out.println(Arrays.deepToString(multiArray2)); // [[0, 0, 0], [0, 0, 0]]
+
+
 ```
 
 - **Static return**
@@ -108,19 +158,14 @@ return new int[] {1,2,3};
       <td><code>Arrays.sort(arr)</code></td>
     </tr>
     <tr>
-      <td><code>Arrays.equals(arr1, arr2)</code></td>
-      <td>Checks if two arrays are equal</td>
-      <td><code>Arrays.equals(a, b)</code></td>
-    </tr>
-    <tr>
       <td><code>Arrays.toString(arr)</code></td>
       <td>Converts array to string</td>
       <td><code>System.out.println(Arrays.toString(arr))</code></td>
     </tr>
     <tr>
-      <td><code>Arrays.stream(arr)</code></td>
-      <td>Streams array for functional ops (Java 8+)</td>
-      <td><code>Arrays.stream(arr).sum()</code></td>
+      <td><code>Arrays.deepToString(arr)</code></td>
+      <td>Converts multi dimension array to string</td>
+      <td><code>System.out.println(Arrays.toString(numbers))</code></td>
     </tr>
   </tbody>
 </table>
