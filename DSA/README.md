@@ -12,24 +12,24 @@
 
 </details>
 
-## [Patterns](./Patterns/README.md)
-  - [Two Pointers](./Patterns/README.md#1-two-pointers)  
-  - [Sliding Window](./Patterns/README.md#2-sliding-window)  
-  - [Greedy](./Patterns/README.md#3-greedy)  
-  - [Linked List](./Patterns/README.md#4-linked-list)  
-  - [Trees](./Patterns/README.md#5-trees)  
-  - [Binary Search](./Patterns/README.md#6-binary-search)  
-  - [Dynamic Programming](./Patterns/README.md#7-dynamic-programming)  
-  - [Graphs](./Patterns/README.md#8-graphs)  
-  - [Bit Manipulation](./Patterns/README.md#9-bit-manipulation)
+## [Patterns](./Patterns.md)
+  - [Two Pointers](./Patterns.md#1-two-pointers)  
+  - [Sliding Window](./Patterns.md#2-sliding-window)  
+  - [Greedy](./Patterns.md#3-greedy)  
+  - [Linked List](./Patterns.md#4-linked-list)  
+  - [Trees](./Patterns.md#5-trees)  
+  - [Binary Search](./Patterns.md#6-binary-search)  
+  - [Dynamic Programming](./Patterns.md#7-dynamic-programming)  
+  - [Graphs](./Patterns.md#8-graphs)  
+  - [Bit Manipulation](./Patterns.md#9-bit-manipulation)
 
-## [Tricks](./Tricks/README.md)
-  - [In-Place Two-Number Encoding Trick in Arrays](./Tricks/README.md#in-place-two-number-encoding-trick-in-arrays)
+## [Tricks](./Tricks.md)
+  - [In-Place Two-Number Encoding Trick in Arrays](./Tricks.md#in-place-two-number-encoding-trick-in-arrays)
 
-## [Arrays](./Arrays/README.md)
-  - [Kadane’s Algorithm](./Arrays/README.md#kadanes-algorithm)
+## [Arrays](./Arrays.md)
+  - [Kadane’s Algorithm](./Arrays.md#kadanes-algorithm)
 
-## [Linked List](./Linked%20List/README.md)
-  - [Floyd’s Cycle Detection Algorithm](./Linked%20List/README.md#floyd's-cycle-detection-algorithm)
+## [Linked List](./Linked%20List.md)
+  - [Floyd’s Cycle Detection Algorithm](./Linked%20List.md#floyd's-cycle-detection-algorithm)
 
 <p align="right"><a href="#top">⬆️ Back to Top</a></p>
