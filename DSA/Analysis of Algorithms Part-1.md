@@ -1,9 +1,14 @@
+<div id="top"></div>
+
 # Analysis of Algorithms Part-1
 
 ## Topics
 
   -   [The Role of Algorithm](./Analysis%20of%20Algorithms%20Part-1.md#the-role-of-algorithm)
-  -   [## Asymptotic Complexity](./Analysis%20of%20Algorithms%20Part-1.md#asymptotic-complexity)
+  -   [Asymptotic Complexity](./Analysis%20of%20Algorithms%20Part-1.md#asymptotic-complexity)
+  -   [Asymptotic NOtation & Growth of Functions](./Analysis%20of%20Algorithms%20Part-1.md#asymptotic-notation-growth-of-functions)
+  -   [Comparing of two functions](./Analysis%20of%20Algorithms%20Part-1.md#comparing-of-two-functions)
+  -   [Order of Growth](./Analysis%20of%20Algorithms%20Part-1.md#order-of-growth)
 
 ## The Role of Algorithm 
 
@@ -32,6 +37,8 @@ A good algorithm can make a significant difference in performance.
     * Speedup = $\frac{1000}{\log_2(1000)} \approx \frac{1000}{10} \approx 100$
 
 This shows that Merge Sort is approximately **100 times faster** than Insertion Sort for an input size of 1000, highlighting the importance of choosing the right algorithm.
+
+---
 
 ## Asymptotic Complexity
 
@@ -64,7 +71,7 @@ This shows that Merge Sort is approximately **100 times faster** than Insertion 
     * **1G** = $2^{30} \approx 10^9$
 
     * **For $n = 50$:**
-        * Time taken, $t = \frac{\text{# of ops}}{\text{speed}} = \frac{2^{50}}{10^8}$
+        * Time taken, $t = \frac{\text{no. of ops}}{\text{speed}} = \frac{2^{50}}{10^8}$
         * $\frac{2^{50}}{10^8} = \frac{(10^3)^5}{10^8} = \frac{10^{15}}{10^8} = 10^7 \text{ seconds}$
         * $10^7 \text{ seconds} \approx 0.317$ years
 
@@ -82,7 +89,7 @@ This shows that Merge Sort is approximately **100 times faster** than Insertion 
 * If the algorithm takes 3 seconds to process an input of size $10^4$, how much time will it take to process an input of size $10^5$ on the same machine?
 
 **Hint:**
-* $Time = \frac{\text{# of ops}}{\text{speed}}$
+* $Time = \frac{\text{no. of ops}}{\text{speed}}$
 
 **Solution:**
 
@@ -103,3 +110,105 @@ This shows that Merge Sort is approximately **100 times faster** than Insertion 
     * $t_2 = 300 \text{ seconds}$
 
 **Answer:** It will take **300 seconds** (or 5 minutes) to process the larger input.
+
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
+---
+
+## Asymptotic NOtation & Growth of Functions
+
+* **Lucky - Best Case:** Input already sorted
+    * $T_{BC}(n) = \theta(n)$
+* **Unlucky - Worst Case:** Input sorted in reverse order
+    * **Lower Bound:** Order $n$
+        * $T(n) = \Omega(n)$
+    * **Upper Bound:** Order $n^2$
+        * $T(n) = O(n^2)$
+    * **Tight Bound:** Order $n^2$
+        * $T(n) = \frac{n(n-1)}{2} = \theta(n^2)$
+
+* $O$: upper bound $\le$
+* $\Omega$: lower bound $\ge$
+* $\theta$: tight asymptotic bound $=$
+* $O$:** exclusive upper bound $<$
+* $\omega$: exclusive lower bound $>$
+
+---
+
+## Comparing of two functions
+
+Given two functions $f(n)$ and $g(n)$:
+
+### Case-1
+
+* **If $\lim_{n\to\infty} \frac{f(n)}{g(n)} = \text{zero}$:**
+    * $f(n) = o(g(n))$ [most precise] - implicits $f(n) < o(g(n))$
+    * $g(n) = \omega(f(n))$ [most precise] - implicits$g(n) $>$ (f(n))$ 
+    * $f(n) = O(g(n))$   - implicits $f(n) \le (g(n))$
+    * $g(n) = \Omega(f(n))$ - implicits $g(n) \ge (f(n))$
+
+    #### Example
+
+    **Given two functions:** $f(n) = n$ and $g(n) = 2n^2$
+
+    **The limit as $n$ approaches infinity:**
+    $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \lim_{n \to \infty} \frac{n}{2n^2} = \lim_{n \to \infty} \frac{1}{2n} = 0$
+
+
+    Since the limit is zero, it implies that $f(n)$ grows strictly slower than $g(n)$. Therefore, the following relationships hold:
+
+    * **$f(n) = o(g(n))$**
+        * This is the most precise answer. It states that $f(n)$ is a "little-o" of $g(n)$, meaning $f(n)$ grows strictly slower than $g(n)$.
+
+    * **$g(n) = \omega(f(n))$**
+        * This is also a precise answer. It states that $g(n)$ is a "little-omega" of $f(n)$, meaning $g(n)$ grows strictly faster than $f(n)$.
+
+    * **$f(n) = O(g(n))$**
+        * This is a correct, but less precise, answer. The Big-O notation indicates that $f(n)$ grows at a rate that is less than or equal to $g(n)$, which is true since it grows strictly slower.
+
+    * **$g(n) = \Omega(f(n))$**
+        * This is also a correct, but less precise, answer. The Big-Omega notation indicates that $g(n)$ grows at a rate that is greater than or equal to $f(n)$, which is true since it grows strictly faster.
+
+### Case-2
+
+* **If $\lim_{n\to\infty} \frac{f(n)}{g(n)} = k$ (a non-zero constant):**
+    * $f(n) = \theta(g(n))$ [most precise] - implicits $f(n) = (g(n))$ 
+    * $f(n) = O(g(n))$ [ precise ]
+    * $f(n) = \Omega(g(n))$ [ precise ]
+
+    #### Example
+
+    **Given two functions:** $f(n) = n^2$ and $g(n) = 4n^2$
+
+    **The limit as $n$ approaches infinity:**
+    $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \lim_{n \to \infty} \frac{n^2}{4n^2} = \frac{1}{4}$
+
+    Since the limit of $\frac{f(n)}{g(n)}$ as $n$ approaches infinity is a non-zero constant, it implies that both functions grow at the same rate. Therefore, the following relationships hold:
+
+    * **$f(n) = \theta(g(n))$**
+        * This is the **most precise** answer. The Big-Theta notation signifies that $f(n)$ and $g(n)$ have the same asymptotic growth rate, meaning they are tightly bound to each other.
+
+    * **$f(n) = O(g(n))$**
+        * This is also a correct answer. The Big-O notation indicates that $f(n)$ grows at a rate that is less than or equal to $g(n)$, which is true since they grow at the same rate.
+
+    * **$f(n) = \Omega(g(n))$**
+        * This is also a correct answer. The Big-Omega notation indicates that $f(n)$ grows at a rate that is greater than or equal to $g(n)$, which is also true since they grow at the same rate.
+
+### Case-3
+
+* **If $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty$**:
+    * $f(n) = \omega(g(n))$
+    * $g(n) = o(f(n))$
+    * $f(n) = \Omega(g(n))$
+    * $g(n) = O(f(n))$
+
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
+---
+
+## Order of Growth
+
+<img width="337" height="246" alt="oog graph" src="https://github.com/user-attachments/assets/46b3f62a-c0f0-4e48-8684-fc3d1f7ae6fd" />
+
+<img width="673" height="682" alt="oog final" src="https://github.com/user-attachments/assets/5bdb8736-254b-4f6d-807f-51a92bd3fa42" />
+
+
+

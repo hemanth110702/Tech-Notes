@@ -9,7 +9,10 @@
   <summary><b>Analysis of Algorithms Part-1 Topics</b></summary>
 
   -   [The Role of Algorithm](./Analysis%20of%20Algorithms%20Part-1.md#the-role-of-algorithm)
-  -   [## Asymptotic Complexity](./Analysis%20of%20Algorithms%20Part-1.md#asymptotic-complexity)
+  -   [Asymptotic Complexity](./Analysis%20of%20Algorithms%20Part-1.md#asymptotic-complexity)
+  -   [Asymptotic NOtation & Growth of Functions](./Analysis%20of%20Algorithms%20Part-1.md#asymptotic-notation-growth-of-functions)
+  -   [Comparing of two functions](./Analysis%20of%20Algorithms%20Part-1.md#comparing-of-two-functions)
+  -   [Order of Growth](./Analysis%20of%20Algorithms%20Part-1.md#order-of-growth)
 
   </details>
 

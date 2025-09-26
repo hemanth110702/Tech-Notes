@@ -3,12 +3,12 @@
 ## Topics
 
   -   [Fundamental Concepts](./Introduction.md#-fundamental-concepts)
-  -   [Evolution of DBMS](./Introduction.md#-evolution-of-dbms)
+  -   [Evolution of DBMS](./Introduction.md#️-evolution-of-dbms)
   -   [File-Based Systems](./Introduction.md#-file-based-systems)
   -   [Relational DBMS (RDBMS)](./Introduction.md#-relational-dbms-rdbms)
   -   [NoSQL Databases](./Introduction.md#-nosql-databases)
   -   [User Administration](./Introduction.md#-user-administration)
-  -   [Advantages of DBMS](./Introduction.md#-advantages-of-dbms)
+  -   [Advantages of DBMS](./Introduction.md#advantages-of-dbms)
 
 ## 📖 Fundamental Concepts
 
@@ -92,7 +92,9 @@ User administration within a DBMS involves tasks that help manage users and main
     * Dealing with concurrency control.
     * Recovering information corrupted by unexpected failures.
 
-### Advantages of DBMS
+---
+
+## Advantages of DBMS
 
 * minimized redundancy and data consistency
 * simplified data access
@@ -100,3 +102,5 @@ User administration within a DBMS involves tasks that help manage users and main
 * Data security
 * Concurrent access to data
 * Backup and recovery mechanism
+
+---
