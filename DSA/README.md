@@ -2,26 +2,16 @@
 
 # My DSA Notes
 
-<details>
-<summary>Table of contents</summary>
+## [Analysis of Algorithms Part-1](./Analysis%20of%20Algorithms%20Part-1.md)
 
-- [Patterns](#patterns)
--   [Tricks](#tricks)
--   [Arrays](#arrays)
--   [Linked List](#linked-list)
+  <details>
 
-</details>
+  <summary><b>Analysis of Algorithms Part-1 Topics</b></summary>
 
-## [Patterns](./Patterns.md)
-  - [Two Pointers](./Patterns.md#1-two-pointers)  
-  - [Sliding Window](./Patterns.md#2-sliding-window)  
-  - [Greedy](./Patterns.md#3-greedy)  
-  - [Linked List](./Patterns.md#4-linked-list)  
-  - [Trees](./Patterns.md#5-trees)  
-  - [Binary Search](./Patterns.md#6-binary-search)  
-  - [Dynamic Programming](./Patterns.md#7-dynamic-programming)  
-  - [Graphs](./Patterns.md#8-graphs)  
-  - [Bit Manipulation](./Patterns.md#9-bit-manipulation)
+  -   [The Role of Algorithm](./Analysis%20of%20Algorithms%20Part-1.md#the-role-of-algorithm)
+  -   [## Asymptotic Complexity](./Analysis%20of%20Algorithms%20Part-1.md#asymptotic-complexity)
+
+  </details>
 
 ## [Tricks](./Tricks.md)
   - [In-Place Two-Number Encoding Trick in Arrays](./Tricks.md#in-place-two-number-encoding-trick-in-arrays)

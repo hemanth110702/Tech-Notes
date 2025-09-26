@@ -1,19 +1,20 @@
 # Database Notes Index
 
-## 💡 Introduction
-* [Introduction](./Introduction.md)
-<details>
-<summary>Introduction</summary>
+## [Introduction](./Introduction.md) 
 
--   [Fundamental Concepts](./Introduction.md#-fundamental-concepts)
--   [Evolution of DBMS](./Introduction.md#-evolution-of-dbms)
--   [File-Based Systems](./Introduction.md#-file-based-systems)
--   [Relational DBMS (RDBMS)](./Introduction.md#-relational-dbms-rdbms)
--   [NoSQL Databases](./Introduction.md#-nosql-databases)
--   [User Administration](./Introduction.md#-user-administration)
--   [Advantages of DBMS](./Introduction.md#-advantages-of-dbms)
+  <details>
 
-</details>
+  <summary><b>Introduction Topics</b></summary>
+
+  -   [Fundamental Concepts](./Introduction.md#-fundamental-concepts)
+  -   [Evolution of DBMS](./Introduction.md#-evolution-of-dbms)
+  -   [File-Based Systems](./Introduction.md#-file-based-systems)
+  -   [Relational DBMS (RDBMS)](./Introduction.md#-relational-dbms-rdbms)
+  -   [NoSQL Databases](./Introduction.md#-nosql-databases)
+  -   [User Administration](./Introduction.md#-user-administration)
+  -   [Advantages of DBMS](./Introduction.md#-advantages-of-dbms)
+
+  </details>
 
 
 
