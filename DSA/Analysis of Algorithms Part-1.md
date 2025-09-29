@@ -112,6 +112,7 @@ This shows that Merge Sort is approximately **100 times faster** than Insertion 
 **Answer:** It will take **300 seconds** (or 5 minutes) to process the larger input.
 
 <p align="right"><a href="#top">⬆️ Back to Top</a></p>
+
 ---
 
 ## Asymptotic NOtation & Growth of Functions
@@ -202,6 +203,7 @@ Given two functions $f(n)$ and $g(n)$:
     * $g(n) = O(f(n))$
 
 <p align="right"><a href="#top">⬆️ Back to Top</a></p>
+
 ---
 
 ## Order of Growth
@@ -209,6 +211,9 @@ Given two functions $f(n)$ and $g(n)$:
 <img width="337" height="246" alt="oog graph" src="https://github.com/user-attachments/assets/46b3f62a-c0f0-4e48-8684-fc3d1f7ae6fd" />
 
 <img width="673" height="682" alt="oog final" src="https://github.com/user-attachments/assets/5bdb8736-254b-4f6d-807f-51a92bd3fa42" />
+
+---
+
 
 
 
