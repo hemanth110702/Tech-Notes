@@ -507,10 +507,11 @@ $$ \log_2(10^6) \approx 2 \times 10 = 20 $$
 
 ### Step 2: Set Execution Times Equal
 
-The time taken is $t = \frac{\text{Ops}}{\text{Speed}}$. Since $t_X = t_Y$:
+The time taken is $t = \frac{\text{Ops}}{\text{Speed}}$.  
+Since $t_X = t_Y$:  
 $$ \frac{\text{Ops}\_X}{\text{Speed}\_X} = \frac{\text{Ops}\_Y}{\text{Speed}\_Y} $$
 
-We are using the dominant terms for operations:
+We are using the dominant terms for operations:  
 $$ \frac{n^2 \log_2 n}{S_X} = \frac{n^3}{S_Y} $$
 
 ### Step 3: Solve for $S_Y$
@@ -530,6 +531,8 @@ $$ S_Y \approx 0.5 \times 10^{12} $$
 $$ S_Y \approx 5 \times 10^{11} \text{ operations/second} $$
 
 **Answer:** The machine running Algorithm Y must have a speed of approximately **$5 \times 10^{11}$ operations/second** (or 500 Giga-operations/second).
+
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
 
 ---
 
