@@ -366,12 +366,13 @@ $$T(n) = \theta(n^2) + \theta(n) = \theta(n^2)$$
 - If the algorithm takes **3 seconds** to process an input of size **$10^4$**, how much time will it take to process an input of size **$10^5$** on the same machine?
 
 **Core Principle:** 
-$$ Time = \frac{# of ops}{speed} $$
+
+$$ \text{Time} = \frac{\text{\# of ops}}{\text{speed}} $$
 
 **Setup (Since $\text{speed}$ is constant):**
 
-1.  ($$ t_1 = \frac{n_1^2}{\text{speed}} \quad (1) $$)
-2.  ($$ t_2 = \frac{n_2^2}{\text{speed}} \quad (2) $$)
+$$ t_1 = \frac{n_1^2}{\text{speed}} \quad (1) $$
+$$ t_2 = \frac{n_2^2}{\text{speed}} \quad (2) $$
 
 **Calculation (Divide (2) by (1)):**
 
