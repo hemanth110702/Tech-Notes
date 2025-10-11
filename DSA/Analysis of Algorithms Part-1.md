@@ -367,7 +367,7 @@ $$T(n) = \theta(n^2) + \theta(n) = \theta(n^2)$$
 
 **Core Principle:** 
 
-$$ \text{Time} = \frac{\text{\# of ops}}{\text{speed}} $$
+$$ \text{Time} = \frac{\text{\no. of ops}}{\text{speed}} $$
 
 **Setup (Since $\text{speed}$ is constant):**
 
