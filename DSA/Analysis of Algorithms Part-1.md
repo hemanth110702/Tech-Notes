@@ -509,9 +509,11 @@ $$ \log_2(10^6) \approx 2 \times 10 = 20 $$
 
 The time taken is $t = \frac{\text{Ops}}{\text{Speed}}$.  
 Since $t_X = t_Y$:  
+
 $$ \frac{\text{Ops}\_X}{\text{Speed}\_X} = \frac{\text{Ops}\_Y}{\text{Speed}\_Y} $$
 
 We are using the dominant terms for operations:  
+
 $$ \frac{n^2 \log_2 n}{S_X} = \frac{n^3}{S_Y} $$
 
 ### Step 3: Solve for $S_Y$
