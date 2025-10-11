@@ -484,7 +484,7 @@ Let $T_{UB} = n^{2.5} \log n$ and $T_{LB} = n (\log n)^3$.
 
 ## Question 3: Machine Speed Comparison
 
-**Question 3:** Consider two algorithms for solving a certain problem: Algorithm X with an asymptotic complexity of $ \theta(n^2 \log_2 n) $ and Algorithm Y with an asymptotic complexity of $\theta(n^3)$. Algorithm X is run on a machine that can execute $ 10^7 $ operation per second. Compute the speed of the machine that we need to run Algorithm Y on in order to get the same execution time as Algorithm X for an input of size one million. Assume base 2 for the log. Compute the best possible approximation without using a calculator. Show your work
+**Question 3:** Consider two algorithms for solving a certain problem: Algorithm X with an asymptotic complexity of $\theta(n^2 \log_2 n)$ and Algorithm Y with an asymptotic complexity of $\theta(n^3)$. Algorithm X is run on a machine that can execute $ 10^7 $ operation per second. Compute the speed of the machine that we need to run Algorithm Y on in order to get the same execution time as Algorithm X for an input of size one million. Assume base 2 for the log. Compute the best possible approximation without using a calculator. Show your work
 
 We need to find the speed of the machine running Algorithm Y ($S_Y$) such that the execution time is the same as Algorithm X ($t_X = t_Y$) for input $n = 10^6$.
 
