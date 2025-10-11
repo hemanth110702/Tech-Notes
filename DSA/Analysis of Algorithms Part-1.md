@@ -358,7 +358,8 @@ $$T(n) = \theta(n^2) + \theta(n) = \theta(n^2)$$
 
 ### Example - 10
 
-### Problem Solving Example (Re-visiting $O(n^2)$)
+### Problem Solving Example 
+$$ Re-visiting O(n^2) $$
 
 **Problem:**
 
@@ -367,7 +368,7 @@ $$T(n) = \theta(n^2) + \theta(n) = \theta(n^2)$$
 
 **Core Principle:** 
 
-$$ \text{Time} = \frac{\text{\no. of ops}}{\text{speed}} $$
+$$ \text{Time} = \frac{\text{no. of ops}}{\text{speed}} $$
 
 **Setup (Since $\text{speed}$ is constant):**
 
