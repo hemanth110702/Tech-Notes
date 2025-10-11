@@ -241,7 +241,7 @@ for (i = 3; i <= n; i++)
     op;
 ```
 
-$$T(n)= $\theta(n) (step is constant) $$
+$$T(n)= $\theta(n) (step_is_constant) $$
 
 ### Example-2
 
@@ -250,7 +250,7 @@ for (i = 3; i <= 2*n(bound); i++)
     op;
 ```
 
-$$T(n) = \theta(n) (step is constant) $$
+$$T(n) = \theta(n) (step_is_constant) $$
 
 ### Example-3
 
@@ -259,7 +259,7 @@ for (i = 3; i <= n; i*=2 (Step))
     op;
 ```
 
-$$T(n) = \theta(\log n) (step is not constant, it grows) $$
+$$T(n) = \theta(\log n) (step_is_not_constant,_it_grows) $$
 
 ### Example-4
 
@@ -268,7 +268,7 @@ for (i = 3; i <= n; i+=2)
     op;
 ```
 
-$$T(n) = \theta(n) (step is constant) $$
+$$T(n) = \theta(n) (step_is_constant) $$
 
 ---
 
@@ -365,13 +365,13 @@ $$T(n) = \theta(n^2) + \theta(n) = \theta(n^2)$$
 - Consider an algorithm with an asymptotic complexity of $\theta(n^2)$.
 - If the algorithm takes **3 seconds** to process an input of size **$10^4$**, how much time will it take to process an input of size **$10^5$** on the same machine?
 
-**Core Principle:** <br/>
-$$ \text{Time} = \frac{\text{# of ops}}{\text{speed}} $$
+**Core Principle:** 
+$$ Time = \frac{# of ops}{speed} $$
 
-**Setup (Since $\text{speed}$ is constant):**<br/>
+**Setup (Since $\text{speed}$ is constant):**
 
-1.  $$ t_1 = \frac{n_1^2}{\text{speed}} \quad (1) $$
-2.  $$ t_2 = \frac{n_2^2}{\text{speed}} \quad (2) $$
+1.  ($$ t_1 = \frac{n_1^2}{\text{speed}} \quad (1) $$)
+2.  ($$ t_2 = \frac{n_2^2}{\text{speed}} \quad (2) $$)
 
 **Calculation (Divide (2) by (1)):**
 
