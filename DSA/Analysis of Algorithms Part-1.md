@@ -649,12 +649,12 @@ InsertionSort(A, n) {
 
 ## 🙏 Special Thanks
 
-I would like to extend my sincere gratitude to **Dr. Ghassan Shobaki** for providing an incredibly helpful YouTube playlist that greatly assisted in the development and understanding of concepts used in this project.
+I would like to extend my sincere gratitude to **Dr. Ghassan Shobaki** for providing an incredibly helpful YouTube playlist that greatly assisted in the development and understanding of concepts of Algorithm Analysis.
 
 The detailed explanations and clear examples in the lectures were invaluable.
 
-* **Playlist:** [Algorithms - Ghassan Shobaki](https://www.youtube.com/playlist?list=PL6KMWPQP_DM8t5pQmuLlarpmVc47DVXWd)
-* **Channel:** [Ghassan Shobaki Computer Science Lectures](https://www.youtube.com/@ghassanshobakicomputerscie9478)
+* **Playlist:** <a href="https://www.youtube.com/playlist?list=PL6KMWPQP_DM8t5pQmuLlarpmVc47DVXWd" target="_blank">Algorithms - Ghassan Shobaki</a>
+* **Channel:** <a href="https://www.youtube.com/@ghassanshobakicomputerscie9478" target="_blank">Ghassan Shobaki Computer Science Lectures</a>
 
 <p align="right"><a href="#top">⬆️ Back to Top</a></p>
 
