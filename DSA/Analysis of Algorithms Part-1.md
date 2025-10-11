@@ -546,7 +546,6 @@ Find the asymptotic complexity of each of the following algorithms. Assume that 
 
 - `Op` is a constant-time operation.
 - `log n` means logarithm in any constant base (Θ same).
-- **Assumption:** in the first algorithm the missing bound `for (j=1; j< ; j*=4)` is assumed to be `for (j=1; j < n; j*=4)`.
 
 ---
 
@@ -554,7 +553,7 @@ Find the asymptotic complexity of each of the following algorithms. Assume that 
 
 ```c
 for (i=1; i < n/2; i+=3) {
-    for (j=1; j < n; j*=4)      // assumed j < n
+    for (j=1; j < sqrt(n); j*=4)      // assumed j < n
         Op;
     for (k=3; k < n*n; k+=2)
         for (m=k-2; m <= k+2; m++)
@@ -608,13 +607,14 @@ for (i=3; i < n; i++) {
 }
 ```
 
-**Exact formula:**
+**Exact formula:**  
 \[
 T(n) = \sum\_{i=3}^{n-1} (2n - i + 1)
 = \frac{3n^2 - 9n}{2}.
 \]
 
-**Asymptotic:** leading term \(\tfrac{3}{2}n^2\) ⇒ Θ(n²).
+**Asymptotic:**  
+leading term \(\tfrac{3}{2}n^2\) ⇒ Θ(n²).
 
 **Answer:** Exact \(T(n)=\tfrac{3n^2-9n}{2}\), asymptotic = **Θ(n²)**.
 
