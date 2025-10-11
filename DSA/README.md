@@ -15,8 +15,8 @@
 - [Order of Growth](./Analysis%20of%20Algorithms%20Part-1.md#order-of-growth)
 - [Asymptotic Complexity - Examples](./Analysis%20of%20Algorithms%20Part-1.md#asymptotic-complexity-examples)
 - [Worksheet 1.1: Growth of Functions and Run-Time Estimation](./Analysis%20of%20Algorithms%20Part-1.md#worksheet-11-growth-of-functions-and-run-time-estimation)
-- [Worksheet 1.2: Lecture 4 — Asymptotic Complexity](./Analysis%20of%20Algorithms%20Part-1.md#worksheet-12-lecture-4--asymptotic-complexity)
-- [Worksheet 1.2: Lecture 4 — Asymptotic Complexity (Variant)](./Analysis%20of%20Algorithms%20Part-1.md#worksheet-12-lecture-4--asymptotic-complexity-variant)
+- [Worksheet 1.2: Asymptotic Complexity](./Analysis%20of%20Algorithms%20Part-1.md#worksheet-12-asymptotic-complexity)
+- [Reference](./Analysis%20of%20Algorithms%20Part-1.md#reference)
 
   </details>
 

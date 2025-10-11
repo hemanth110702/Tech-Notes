@@ -11,8 +11,14 @@
 - [Order of Growth](./Analysis%20of%20Algorithms%20Part-1.md#order-of-growth)
 - [Asymptotic Complexity - Examples](./Analysis%20of%20Algorithms%20Part-1.md#asymptotic-complexity-examples)
 - [Worksheet 1.1: Growth of Functions and Run-Time Estimation](./Analysis%20of%20Algorithms%20Part-1.md#worksheet-11-growth-of-functions-and-run-time-estimation)
-- [Worksheet 1.2: Lecture 4 — Asymptotic Complexity](./Analysis%20of%20Algorithms%20Part-1.md#worksheet-12-lecture-4--asymptotic-complexity)
-- [Worksheet 1.2: Lecture 4 — Asymptotic Complexity (Variant)](./Analysis%20of%20Algorithms%20Part-1.md#worksheet-12-lecture-4--asymptotic-complexity-variant)
+- [Worksheet 1.2: Asymptotic Complexity](./Analysis%20of%20Algorithms%20Part-1.md#worksheet-12-asymptotic-complexity)
+- [Reference](./Analysis%20of%20Algorithms%20Part-1.md#reference)
+
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
+
+---
+
+
 
 ## The Role of Algorithm
 
@@ -538,130 +544,7 @@ $$ S_Y \approx 5 \times 10^{11} \text{ operations/second} $$
 
 ---
 
-# Worksheet 1.2: Lecture 4 — Asymptotic Complexity
-
-Find the asymptotic complexity of each of the following algorithms. Assume that the input size is n and that Op is a constant-time operation. Show your analysis. If it is possible to analyze each loop separately, you must give the asymptotic complexity for each loop, and then show how you combine them to compute the asymptotic complexity for the whole algorithm.
-
-**Notation / assumptions**
-
-- `Op` is a constant-time operation.
-- `log n` means logarithm in any constant base (Θ same).
-
----
-
-## (1)
-
-```c
-for (i=1; i < n/2; i+=3) {
-    for (j=1; j < sqrt(n); j*=4)      // assumed j < n
-        Op;
-    for (k=3; k < n*n; k+=2)
-        for (m=k-2; m <= k+2; m++)
-            Op;
-}
-```
-
-**Analysis:**
-
-- Outer `i` loop → Θ(n).
-- Inner `j` loop → Θ(log n).
-- `k` loop → Θ(n²).
-- `m` loop → Θ(1).
-- `k`–`m` pair → Θ(n²).
-- Per `i` iteration → Θ(n²).
-- Total = Θ(n³).
-
-**Answer:** **Θ(n³)**.
-
----
-
-## (2)
-
-```c
-for (i=1; i < 4*n; i+=2) {
-    for (j=i+5; j >= i; j--)
-        Op;
-}
-for (k=1; k < n*n*n; k*=5) {
-    for (m=1; m < logn; m++)
-        Op;
-}
-```
-
-**Analysis:**
-
-- First double loop: `i` → Θ(n), `j` → Θ(1) ⇒ Θ(n).
-- Second double loop: `k` → Θ(log n), `m` → Θ(log n) ⇒ Θ((log n)²).
-- Sequential total: Θ(n) + Θ((log n)²) = Θ(n).
-
-**Answer:** **Θ(n)**.
-
----
-
-## (3)
-
-```c
-for (i=3; i < n; i++) {
-    for (j=i; j <= 2*n; j++)
-        Op;
-}
-```
-
-**Exact formula:**  
-\[
-T(n) = \sum\_{i=3}^{n-1} (2n - i + 1)
-= \frac{3n^2 - 9n}{2}.
-\]
-
-**Asymptotic:**  
-leading term \(\tfrac{3}{2}n^2\) ⇒ Θ(n²).
-
-**Answer:** Exact \(T(n)=\tfrac{3n^2-9n}{2}\), asymptotic = **Θ(n²)**.
-
----
-
-## (4) InsertionSort on Alternating Input
-
-Array of size `n` (even):  
-`<3, 8, 3, 8, … , 3, 8>`
-
-```c
-InsertionSort(A, n) {
-  for (i=1; i < n; i++) {
-    key = A[i];
-    for (j=i-1; j>=0 && A[j] > key; j--)
-       A[j+1] = A[j];
-    A[j+1] = key;
-  }
-}
-```
-
-**Pattern:**
-
-- Odd `i` (keys = 8) → 0 shifts.
-- Even `i=2t` (keys = 3) → exactly `t` shifts.
-
-**Total shifts:**
-\[
-1+2+3+...+(n/2 - 1) = \frac{n^2 - 2n}{8}.
-\]
-
-**Total comparisons:**
-\[
-\frac{n^2}{8} + \frac{3n}{4} - 1.
-\]
-
-**Asymptotic runtime:** Θ(n²).
-
-**Answer:**
-
-- Shifts = \(\dfrac{n^2 - 2n}{8}\).
-- Comparisons = \(\dfrac{n^2}{8} + \dfrac{3n}{4} - 1\).
-- Overall = **Θ(n²)**.
-
----
-
-# Worksheet 1.2: Lecture 4 — Asymptotic Complexity (Variant)
+# Worksheet 1.2: Asymptotic Complexity
 
 Find the asymptotic complexity of each of the following algorithms. Assume that the input size is n and that Op is a constant-time operation. Show your analysis. If it is possible to analyze each loop separately, you must give the asymptotic complexity for each loop, and then show how you combine them to compute the asymptotic complexity for the whole algorithm.
 
@@ -732,15 +615,9 @@ for (i=3; i < n; i++) {
 }
 ```
 
-**Exact formula (count of `Op`):**
-For `i = 3..n-1`, inner loop runs `2n - i + 1` times. So
-\[
-T(n) = \sum\_{i=3}^{n-1} (2n - i + 1) = \frac{3n^2 - 9n}{2}.
-\]
-
+**Answer:** 
 **Asymptotic:** Θ(n²).
 
-**Answer:** Exact \(T(n)=\tfrac{3n^2-9n}{2}\), asymptotic = **Θ(n²)**.
 
 ---
 
@@ -760,23 +637,26 @@ InsertionSort(A, n) {
 }
 ```
 
-**Pattern (inspect first i):**
-
-- `i=1` (8): 0 shifts.
-- `i=2` (3): 1 shift.
-- `i=3` (8): 0 shifts.
-- `i=4` (3): 2 shifts.
-- So even `i=2t` → `t` shifts; odd `i` → 0 shifts.
-
-**Total shifts:**
-\[
-1+2+...+(n/2 - 1) = \frac{n^2 - 2n}{8}.
-\]
-
-**Total comparisons:** Θ(n²) (exact expression equals \(\frac{n^2}{8} + \frac{3n}{4} - 1\)).
-
+**Answer:** 
 **Asymptotic runtime:** **Θ(n²)**.
 
-**Answer:** Shifts = \(\dfrac{n^2 - 2n}{8}\); Comparisons ≈ \(\dfrac{n^2}{8} + \dfrac{3n}{4} - 1\); Overall = **Θ(n²)**.
+
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
 
 ---
+
+# Reference
+
+## 🙏 Special Thanks
+
+I would like to extend my sincere gratitude to **Dr. Ghassan Shobaki** for providing an incredibly helpful YouTube playlist that greatly assisted in the development and understanding of concepts used in this project.
+
+The detailed explanations and clear examples in the lectures were invaluable.
+
+* **Playlist:** [Algorithms - Ghassan Shobaki](https://www.youtube.com/playlist?list=PL6KMWPQP_DM8t5pQmuLlarpmVc47DVXWd)
+* **Channel:** [Ghassan Shobaki Computer Science Lectures](https://www.youtube.com/@ghassanshobakicomputerscie9478)
+
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
+
+---
+
