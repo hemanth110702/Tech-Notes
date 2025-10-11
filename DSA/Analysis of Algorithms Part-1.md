@@ -42,6 +42,8 @@ A good algorithm can make a significant difference in performance.
 
 This shows that Merge Sort is approximately **100 times faster** than Insertion Sort for an input size of 1000, highlighting the importance of choosing the right algorithm.
 
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
+
 ---
 
 ## Asymptotic Complexity
@@ -122,7 +124,7 @@ This shows that Merge Sort is approximately **100 times faster** than Insertion 
 
 ---
 
-## Asymptotic NOtation & Growth of Functions
+## Asymptotic Notation & Growth of Functions
 
 - **Lucky - Best Case:** Input already sorted
   - $T_{BC}(n) = \theta(n)$
@@ -226,6 +228,8 @@ Given two functions $f(n)$ and $g(n)$:
 
 <img width="673" height="682" alt="oog final" src="https://github.com/user-attachments/assets/5bdb8736-254b-4f6d-807f-51a92bd3fa42" />
 
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
+
 ---
 
 ## Asymptotic Complexity Examples
@@ -237,8 +241,7 @@ for (i = 3; i <= n; i++)
     op;
 ```
 
-$$T(n)= $\theta(n)$$
-(step is constant)
+$$T(n)= $\theta(n) (step is constant) $$
 
 ### Example-2
 
@@ -247,8 +250,7 @@ for (i = 3; i <= 2*n(bound); i++)
     op;
 ```
 
-$$T(n) = \theta(n)$$
-(step is constant)
+$$T(n) = \theta(n) (step is constant) $$
 
 ### Example-3
 
@@ -257,9 +259,7 @@ for (i = 3; i <= n; i*=2 (Step))
     op;
 ```
 
-$$x = \log_2 n + 1$$
-$$T(n) = \theta(\log n)$$
-(step is not constant, it grows)
+$$T(n) = \theta(\log n) (step is not constant, it grows) $$
 
 ### Example-4
 
@@ -268,8 +268,9 @@ for (i = 3; i <= n; i+=2)
     op;
 ```
 
-$$T(n) = \theta(n) $$
-(step is constant)
+$$T(n) = \theta(n) (step is constant) $$
+
+---
 
 ### 📝 Note on Logarithm Base in Asymptotic Notation
 
@@ -287,6 +288,8 @@ Since $\log_{10} 2$ is a **constant** value (approximately 0.301), the expressio
 $$\log_2 n = (\text{Constant}) \times \log_{10} n$$
 
 In asymptotic analysis, we discard all constant factors. Therefore, $O(\log_2 n)$ is equivalent to $O(\log_{10} n)$, and both are simply written as $O(\log n)$.
+
+---
 
 ### Example - 5
 
@@ -362,10 +365,10 @@ $$T(n) = \theta(n^2) + \theta(n) = \theta(n^2)$$
 - Consider an algorithm with an asymptotic complexity of $\theta(n^2)$.
 - If the algorithm takes **3 seconds** to process an input of size **$10^4$**, how much time will it take to process an input of size **$10^5$** on the same machine?
 
-**Core Principle:**
+**Core Principle:** <br/>
 $$ \text{Time} = \frac{\text{# of ops}}{\text{speed}} $$
 
-**Setup (Since $\text{speed}$ is constant):**
+**Setup (Since $\text{speed}$ is constant):**<br/>
 
 1.  $$ t_1 = \frac{n_1^2}{\text{speed}} \quad (1) $$
 2.  $$ t_2 = \frac{n_2^2}{\text{speed}} \quad (2) $$
