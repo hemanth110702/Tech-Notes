@@ -358,37 +358,6 @@ $$T(n) = \theta(n^2) + \theta(n) = \theta(n^2)$$
 
 ### Example - 10
 
-### Problem Solving Example 
-$$ Re-visiting O(n^2) $$
-
-**Problem:**
-
-- Consider an algorithm with an asymptotic complexity of $\theta(n^2)$.
-- If the algorithm takes **3 seconds** to process an input of size **$10^4$**, how much time will it take to process an input of size **$10^5$** on the same machine?
-
-**Core Principle:** 
-
-$$ \text{Time} = \frac{\text{no. of ops}}{\text{speed}} $$
-
-**Setup (Since $\text{speed}$ is constant):**
-
-$$ t_1 = \frac{n_1^2}{\text{speed}} \quad (1) $$
-$$ t_2 = \frac{n_2^2}{\text{speed}} \quad (2) $$
-
-**Calculation (Divide (2) by (1)):**
-
-$$ \frac{t_2}{t_1} = \frac{n_2^2}{n_1^2} = \left(\frac{n_2}{n_1}\right)^2 $$
-
-**Substituting values:**
-
-$$ t_2 = t_1 \times \left(\frac{n_2}{n_1}\right)^2 $$
-$$ t_2 = 3 \text{ seconds} \times \left(\frac{10^5}{10^4}\right)^2 $$
-$$ t_2 = 3 \times (10)^2 $$
-$$ t_2 = 3 \times 100 $$
-$$ t_2 = 300 \text{ seconds} $$
-
-### Example - 11
-
 ### Asymptotic Comparison of $f(n)$ and $g(n)$
 
 **Given Functions:**
@@ -416,13 +385,17 @@ Since the limit is **zero**, the following asymptotic relationships hold:
 | **$g(n)$ is Little-omega of $f(n)$** | $g(n) = \omega(f(n))$ | $g(n)$ is **strictly greater than** $f(n)$    |
 | **$g(n)$ is Big-Omega of $f(n)$**    | $g(n) = \Omega(f(n))$ | $g(n)$ is **greater than or equal to** $f(n)$ |
 
+<p align="right"><a href="#top">⬆️ Back to Top</a></p>
+
+---
+
 # Worksheet 1.1: Growth of Functions and Run-Time Estimation
 
 ## Question 1: Asymptotic Relations
 
 **Question 1:** For each pair of functions below, first determine which function grows asymptotically faster, and then express the relation between the two functions using all the asymptotic notations (θ, O, Ω, o and ω) that apply. Only give the relations in which f(n) appears on the left-hand side. Justify your answer, and use the limit definition if necessary.
 
-1. $f(n) = n^2 + (\log n)^3$ vs. $g(n) = n^2 \log n$
+1. $f(n) = n^2 + (\log n)^3$ vs. $g(n) = n^2 \log n$  
    No justification is required
 
 2. $f(n) = 4^n$ vs. $g(n) = 3^n + n$  
@@ -511,7 +484,7 @@ Let $T_{UB} = n^{2.5} \log n$ and $T_{LB} = n (\log n)^3$.
 
 ## Question 3: Machine Speed Comparison
 
-**Question 3:** Consider two algorithms for solving a certain problem: Algorithm X with an asymptotic complexity of θ(n2logn) and Algorithm Y with an asymptotic complexity of θ(n3). Algorithm X is run on a machine that can execute 107 operation per second. Compute the speed of the machine that we need to run Algorithm Y on in order to get the same execution time as Algorithm X for an input of size one million. Assume base 2 for the log. Compute the best possible approximation without using a calculator. Show your work
+**Question 3:** Consider two algorithms for solving a certain problem: Algorithm X with an asymptotic complexity of $ \theta(n^2 \log_2 n) $ and Algorithm Y with an asymptotic complexity of $\theta(n^3)$. Algorithm X is run on a machine that can execute $ 10^7 $ operation per second. Compute the speed of the machine that we need to run Algorithm Y on in order to get the same execution time as Algorithm X for an input of size one million. Assume base 2 for the log. Compute the best possible approximation without using a calculator. Show your work
 
 We need to find the speed of the machine running Algorithm Y ($S_Y$) such that the execution time is the same as Algorithm X ($t_X = t_Y$) for input $n = 10^6$.
 
