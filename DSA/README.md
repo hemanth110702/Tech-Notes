@@ -26,13 +26,13 @@
 
   <summary><b>Analysis of Algorithms Part-2 Topics</b></summary>
 
-- [Analysis of Common Loops](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf#page=1)
-- [Analysis of Multiple Loops](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf#page=3)
-- [Analysis of Recursion](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf#page=5)
-- [Recursion Tree Method for Solving Recurrences](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf#page=6)
-- [Upper Bound using Recursion Tree Method](https://github.com/hemanth110702/Tech-Notes/blob/main/DSA/2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf#page=8)
-- [Space Complexity](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf#page=9)
-- [Auxilary Space](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf#page=11)
+- [Analysis of Common Loops](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf)
+- [Analysis of Multiple Loops](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf)
+- [Analysis of Recursion](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf)
+- [Recursion Tree Method for Solving Recurrences](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf)
+- [Upper Bound using Recursion Tree Method ](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf)
+- [Space Complexity](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf)
+- [Auxilary Space](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf)
 
   </details>
 
