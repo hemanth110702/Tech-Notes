@@ -14,8 +14,8 @@
 
   - [JDK Architecture](./1.Introduction.md#jdk-architecture)
   - [Compilation Flow](./1.Introduction.md#compilation-flow)
+  - [Java Program Skeleton](./1.Introduction.md#-java-program-skeleton)
   - [Reading Input from Keyboard](./1.Introduction.md#reading-input-from-keyboard)
-  - [Common CMD Commands](./1.Introduction.md#common-cmd-commands)
   - [JVM Architecture](./1.Introduction.md#jvm-architecture)
   - [Reference Types](./1.Introduction.md#reference-types)
   - [OOP Concepts](./1.Introduction.md#oop-concepts)
