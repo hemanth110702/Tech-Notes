@@ -20,6 +20,8 @@
 - [Primitive Types](#primitive-types)
 - [Primitive Types vs Reference Types](#primitive-types-vs-reference-types)
 - [Parameters vs Arguments](#parameters-vs-arguments)
+- [Strings](#strings)
+- [Escape Sequences](#Escape-Sequences)
 
 ## [Java Utilities & Collections](./2.Java%20Utilities%20&%20Collections.md)
 
