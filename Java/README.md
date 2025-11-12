@@ -22,6 +22,13 @@
 - [Parameters vs Arguments](./1.Introduction.md#parameters-vs-arguments)
 - [Strings](./1.Introduction.md#strings)
 - [Escape Sequences](./1.Introduction.md#Escape-Sequences)
+- [Arrays](#arrays)
+- [Multi-dimensional Arrays](#multi-dimensional-arrays)
+- [Constants](#constants)
+- [Arithmetic Expressions](#arithmetic-expressions)
+- [Order of Operations](#order-of-operations-operator-precedence)
+- [Casting](#casting)
+
 
 ## [Java Utilities & Collections](./2.Java%20Utilities%20&%20Collections.md)
 
