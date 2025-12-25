@@ -7,6 +7,7 @@
 
 - [Introduction](#introduction)
 - [Java Utilities & Collections](#java-utilities-&-collections)
+- [OOPS Concepts](#oops-concepts)
 
 </details>
 
@@ -28,7 +29,8 @@
 - [Arithmetic Expressions](#arithmetic-expressions)
 - [Order of Operations](#order-of-operations-operator-precedence)
 - [Casting](#casting)
-
+- [Math Class](#the-math-class)
+- [Formatting Numbers](#formatting-numbers)
 
 ## [Java Utilities & Collections](./2.Java%20Utilities%20&%20Collections.md)
 
