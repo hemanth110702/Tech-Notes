@@ -36,7 +36,7 @@ A practical cheat‑sheet for mastering Git and GitHub from basics to advanced w
 
 
 
----
+<hr/>
 
 ## 🖥️ Command Line Basics
 
@@ -47,7 +47,7 @@ cd ~/Desktop/folder     # Change directory
 
 > ⚠️ Run git commands inside the project folder.
 
----
+<hr/>
 
 ## 🧠 Git Concepts
 
@@ -55,7 +55,7 @@ cd ~/Desktop/folder     # Change directory
 - **Version History** = Commit history
 - **Working Area → Staging Area → Commit History**
 
----
+<hr/>
 
 ## 🆕 Initialize Git
 
@@ -64,12 +64,12 @@ git init  # Git will start tracking all changes in the current folder
 git status  # Show all changes since the previous commit
 ```
 
----
+<hr/>
 
 - **Working Area** = contains changes start in the working area
 - **Staging Area** = contains changes that will go into the next commit
 
----
+<hr/>
 
 ## 📦 Staging Changes
 
@@ -79,7 +79,7 @@ git add folder/  # Pick all files inside a folder (and subfolders)
 git add .  # Pick all files (in folder command line is running in)
 ```
 
----
+<hr/>
 
 ## 💾 Creating Commits
 
@@ -93,7 +93,7 @@ git log --oneline
 ```
 
 <p align="right">(<a href="#top">back to top</a>)
----
+<hr/>
 
 ## Conventional Commits
 
@@ -125,7 +125,7 @@ git commit -m "feat: advanced login" `
 - **chore:** Regular code maintenance.[ You can also use emojis to represent commit types]
 
 <p align="right">(<a href="#top">back to top</a>)
----
+<hr/>
 
 ## ⚙️ Configure Git
 
@@ -134,7 +134,7 @@ git config --global user.name "Your Name"
 git config --global user.email "email@example.com"
 ```
 
----
+<hr/>
 
 ## 🔄 Reset & Checkout
 
@@ -153,7 +153,7 @@ git checkout -- folder/
 git checkout -- .
 ```
 <p align="right">(<a href="#top">back to top</a>)
----
+<hr/>
 
 ## 🕒 Viewing Previous Commits
 
@@ -165,7 +165,7 @@ git checkout <branch_name>
 - `HEAD` → current commit
 - `master/main` → latest commit on branch
 
----
+<hr/>
 
 ## ♻️ Restore Files from Previous Commit
 
@@ -175,7 +175,7 @@ git checkout <hash> folder/
 git checkout <hash> .
 ```
 
----
+<hr/>
 
 ## 🧩 Git Aliases
 
@@ -185,7 +185,7 @@ git s
 git config --global --unset alias.s # to remove an alias
 ```
 
----
+<hr/>
 
 ## 🙈 .gitignore
 
@@ -203,14 +203,14 @@ Remove-Item -Recurse -Force -LiteralPath ".\.git"
 - Delete the .git from hidden folders in the project
 
 <p align="right">(<a href="#top">back to top</a>)
----
+<hr/>
 
 ## ☁️ GitHub Basics
 
 - **Local Repo** = On your computer
 - **Remote Repo** = On GitHub
 
----
+<hr/>
 
 ## 🔗 Connect to GitHub
 
@@ -222,7 +222,7 @@ git remote remove origin  # Removes the link to the remote repository named "ori
 git config --global credential.username <username>  # Configure your GitHub username so you can get access to your Github repository
 ```
 
----
+<hr/>
 
 ## ⬆️ Push Code
 
@@ -232,7 +232,7 @@ git push origin main --set-upstream # Next time you are on the main branch and y
 git push origin main -f # Force-push the branch to the remote repository (it will overwrite what's on the remote repository)
 ```
 
----
+<hr/>
 
 ## ⬇️ Clone / Pull
 
@@ -244,7 +244,7 @@ git pull origin main --set-upstream
 ```
 
 <p align="right">(<a href="#top">back to top</a>)
----
+<hr/>
 
 ## 🌿 Branching
 
@@ -256,7 +256,7 @@ git branch -D feature1
 
 - `HEAD -> feature1` → current branch
 
----
+<hr/>
 
 ## 🔀 Merging
 
@@ -265,7 +265,7 @@ git checkout main
 git merge feature1 -m "message"
 ```
 
----
+<hr/>
 
 ## ⚠️ Merge Conflicts
 
@@ -289,7 +289,7 @@ git add .
 git commit -m "resolved conflict"
 ```
 
----
+<hr/>
 
 ## 🧪 Feature Branch Workflow
 
@@ -305,7 +305,7 @@ Then create a Pull Request on GitHub and merge into `main`.
 
 
 <p align="right">(<a href="#top">back to top</a>)
----
+<hr/>
 
 ## 🔄 Sync After Merge
 
@@ -314,7 +314,7 @@ git checkout main
 git pull origin main
 ```
 
----
+<hr/>
 
 ## Delete branch
 
@@ -322,17 +322,17 @@ git pull origin main
 git branch -D branch-name
 ```
 
----
+<hr/>
 
 ## 🧠 Pro Tip
 
 Use branches for features and fixes. Keep `main` clean and production-ready.
 
----
+<hr/>
 
 ## Reference
 > Reference PDF by: supersimple.dev
 > Tutorial Source: https://www.youtube.com/watch?v=hrTQipWp6co  
 
 <p align="right">(<a href="#top">back to top</a>)
----
+<hr/>
