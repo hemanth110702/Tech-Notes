@@ -1,0 +1,338 @@
+
+<div id="top"></div>
+# 🚀 Git & GitHub – 0 to Pro Reference
+
+A practical cheat‑sheet for mastering Git and GitHub from basics to advanced workflows.
+
+<details>
+<summary>Table of contents</summary>
+
+- [Command Line Basics](#️-command-line-basics)
+- [Git Concepts](#-git-concepts)
+- [Initialize Git](#-initialize-git)
+- [Staging Changes](#-staging-changes)
+- [Creating Commits](#-creating-commits)
+- [Conventional Commits](#conventional-commits)
+- [Specify the type of commit](#specify-the-type-of-commit)
+- [Configure Git](#️-configure-git)
+- [Reset & Checkout](#-reset--checkout)
+- [Viewing Previous Commits](#-viewing-previous-commits)
+- [Restore Files from Previous Commit](#️-restore-files-from-previous-commit)
+- [Git Aliases](#-git-aliases)
+- [.gitignore](#-gitignore)
+- [Connect to GitHub](#-connect-to-github)
+- [Push Code](#️-push-code)
+- [Clone / Pull](#️-clone--pull)
+- [Branching](#-branching)
+- [Merging](#-merging)
+- [Merge Conflicts](#️-merge-conflicts)
+- [Feature Branch Workflow](#-feature-branch-workflow)
+- [Sync After Merge](#-sync-after-merge)
+- [Delete Branch](#delete-branch)
+- [Pro Tip](#-pro-tip)
+- [Reference](#reference)
+
+</details>
+
+
+
+---
+
+## 🖥️ Command Line Basics
+
+```bash
+ls                       # List files and folders
+cd ~/Desktop/folder     # Change directory
+```
+
+> ⚠️ Run git commands inside the project folder.
+
+---
+
+## 🧠 Git Concepts
+
+- **Version** = Commit
+- **Version History** = Commit history
+- **Working Area → Staging Area → Commit History**
+
+---
+
+## 🆕 Initialize Git
+
+```bash
+git init  # Git will start tracking all changes in the current folder
+git status  # Show all changes since the previous commit
+```
+
+---
+
+- **Working Area** = contains changes start in the working area
+- **Staging Area** = contains changes that will go into the next commit
+
+---
+
+## 📦 Staging Changes
+
+```bash
+git add file  # Pick individual file
+git add folder/  # Pick all files inside a folder (and subfolders)
+git add .  # Pick all files (in folder command line is running in)
+```
+
+---
+
+## 💾 Creating Commits
+
+```bash
+git commit -m "message"  # Creates a commit with a message attached
+git commit -m "message" --amend   # Update previous commit instead of creating new one
+git log  # View the commit history
+git log --all  # Show all commits (not just current branch)
+git log --all --graph  # Show branching visually in the command line
+git log --oneline
+```
+
+<p align="right">(<a href="#top">back to top</a>)
+---
+
+## Conventional Commits
+
+- Structure:
+```bash
+<type>: <description>
+
+[optional body]
+
+[optional footer]
+```
+
+- Example:
+```bash
+git commit -m "feat: advanced login" `
+-m "Added JWT token verification middleware" `
+-m "Fixed bug in session timeout logic" `
+-m "Closes #42"
+```
+
+### Specify the type of commit:
+
+- **feat:** The new feature you're adding to a particular application
+- **fix:** A bug fix
+- **style:** Feature and updates related to styling
+- **refactor:** Refactoring a specific section of the codebase
+- **test:** Everything related to testing
+- **docs:** Everything related to documentation
+- **chore:** Regular code maintenance.[ You can also use emojis to represent commit types]
+
+<p align="right">(<a href="#top">back to top</a>)
+---
+
+## ⚙️ Configure Git
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "email@example.com"
+```
+
+---
+
+## 🔄 Reset & Checkout
+
+### Staging → Working
+```bash
+git reset file
+git reset folder/
+git reset .
+```
+
+### Working → Remove Changes
+```bash
+git checkout <commit>  <file/folder>  #syntax
+git checkout -- file
+git checkout -- folder/
+git checkout -- .
+```
+<p align="right">(<a href="#top">back to top</a>)
+---
+
+## 🕒 Viewing Previous Commits
+
+```bash
+git checkout <commit_hash>
+git checkout <branch_name>
+```
+
+- `HEAD` → current commit
+- `master/main` → latest commit on branch
+
+---
+
+## ♻️ Restore Files from Previous Commit
+
+```bash
+git checkout <hash> file
+git checkout <hash> folder/
+git checkout <hash> .
+```
+
+---
+
+## 🧩 Git Aliases
+
+```bash
+git config --global alias.s "status"
+git s
+git config --global --unset alias.s # to remove an alias
+```
+
+---
+
+## 🙈 .gitignore
+
+Tell Git which files/folders NOT to track.
+.gitignore
+
+```bash
+rm -rf .git # to remove git completely from the project - it deletes the .git folder
+```
+
+Windows PowerShell:
+```powershell
+Remove-Item -Recurse -Force -LiteralPath ".\.git"
+```
+- Delete the .git from hidden folders in the project
+
+<p align="right">(<a href="#top">back to top</a>)
+---
+
+## ☁️ GitHub Basics
+
+- **Local Repo** = On your computer
+- **Remote Repo** = On GitHub
+
+---
+
+## 🔗 Connect to GitHub
+
+```bash
+git remote add <remote_name> <url> # Link a local repository to a remote repository andgive a name for this link
+git remote  # List all remote repositories that are linked
+git remote -v # List all remote repositories (but with more detail)
+git remote remove origin  # Removes the link to the remote repository named "origin"
+git config --global credential.username <username>  # Configure your GitHub username so you can get access to your Github repository
+```
+
+---
+
+## ⬆️ Push Code
+
+```bash
+git push origin main  # Upload a branch of your git version history to your remote repository
+git push origin main --set-upstream # Next time you are on the main branch and you run git push, it will automatically push the main branch to origin
+git push origin main -f # Force-push the branch to the remote repository (it will overwrite what's on the remote repository)
+```
+
+---
+
+## ⬇️ Clone / Pull
+
+```bash
+git clone <url> <folder_name>
+git fetch
+git pull origin main
+git pull origin main --set-upstream
+```
+
+<p align="right">(<a href="#top">back to top</a>)
+---
+
+## 🌿 Branching
+
+```bash
+git branch feature1
+git checkout feature1
+git branch -D feature1
+```
+
+- `HEAD -> feature1` → current branch
+
+---
+
+## 🔀 Merging
+
+```bash
+git checkout main
+git merge feature1 -m "message"
+```
+
+---
+
+## ⚠️ Merge Conflicts
+
+When conflicts occur, Git marks the file like this:
+
+```
+<<<<<<< HEAD
+code from current branch
+=======
+code from merging branch
+>>>>>>> branch
+```
+
+### To resolve:
+1. Remove conflict markers
+2. Keep the final code you want
+3. Commit the changes
+
+```bash
+git add .
+git commit -m "resolved conflict"
+```
+
+---
+
+## 🧪 Feature Branch Workflow
+
+```bash
+git branch new-feature
+git checkout new-feature
+git add .
+git commit -m "new feature"
+git push origin new-feature
+```
+
+Then create a Pull Request on GitHub and merge into `main`.
+
+
+<p align="right">(<a href="#top">back to top</a>)
+---
+
+## 🔄 Sync After Merge
+
+```bash
+git checkout main
+git pull origin main
+```
+
+---
+
+## Delete branch
+
+```bash
+git branch -D branch-name
+```
+
+---
+
+## 🧠 Pro Tip
+
+Use branches for features and fixes. Keep `main` clean and production-ready.
+
+---
+
+## Reference
+> Reference PDF by: supersimple.dev
+> Tutorial Source: https://www.youtube.com/watch?v=hrTQipWp6co  
+
+<p align="right">(<a href="#top">back to top</a>)
+---
