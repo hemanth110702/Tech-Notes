@@ -1,5 +1,6 @@
 
 <div id="top"></div>
+
 # 🚀 Git & GitHub – 0 to Pro Reference
 
 A practical cheat‑sheet for mastering Git and GitHub from basics to advanced workflows.
@@ -143,6 +144,9 @@ git config --global user.email "email@example.com"
 git reset file
 git reset folder/
 git reset .
+
+git reset --hard head~1  #to completely go back to previous commit | Deletes the latest commit from history.
+git push -f   # to remove the future commit from present commit | Forces remote to forget that commit too
 ```
 
 ### Working → Remove Changes
@@ -262,7 +266,8 @@ git branch -D feature1
 
 ```bash
 git checkout main
-git merge feature1 -m "message"
+git merge feature1 -m "message"  
+git merge --no-ff feature1 -m "message" # no fast forward commit, feature 1 is shown as separate and merged
 ```
 
 <hr/>
