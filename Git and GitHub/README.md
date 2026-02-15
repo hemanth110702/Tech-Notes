@@ -21,6 +21,7 @@ A practical cheat‑sheet for mastering Git and GitHub from basics to advanced w
 - [Restore Files from Previous Commit](#️-restore-files-from-previous-commit)
 - [Git Aliases](#-git-aliases)
 - [.gitignore](#-gitignore)
+- [Delete Git](#delete-git)
 - [Connect to GitHub](#-connect-to-github)
 - [Push Code](#️-push-code)
 - [Clone / Pull](#️-clone--pull)
@@ -30,6 +31,7 @@ A practical cheat‑sheet for mastering Git and GitHub from basics to advanced w
 - [Feature Branch Workflow](#-feature-branch-workflow)
 - [Sync After Merge](#-sync-after-merge)
 - [Delete Branch](#delete-branch)
+- []
 - [Pro Tip](#-pro-tip)
 - [Reference](#reference)
 
@@ -196,6 +198,10 @@ git config --global --unset alias.s # to remove an alias
 Tell Git which files/folders NOT to track.
 .gitignore
 
+<hr/>
+
+## Delete Git
+
 ```bash
 rm -rf .git # to remove git completely from the project - it deletes the .git folder
 ```
@@ -325,6 +331,47 @@ git pull origin main
 
 ```bash
 git branch -D branch-name
+```
+
+<hr/>
+
+## Git Rebase
+
+Rebasing is the process of moving or combining a sequence of commits to a new base commit. It is primarily used to maintain a clean, linear project history.
+
+### Interactive Rebase
+Use this to edit, squash, or reorder commits before they are shared.
+```bash
+git rebase -i HEAD~n
+```
+
+- Common Commands in Interactive Mode: 
+    - **reword:** Use the commit, but edit the commit message.
+    - **squash:** Meld the commit into the previous one.
+    - **pick:** Use the commit as is.
+    - **drop:** Remove the commit entirely.
+
+<hr/>
+
+## Git Reflog
+
+Think of Reflog as your local "undo" history. While git log shows the history of the branch, git reflog records every time your HEAD pointer moves—including resets, checkouts, and rebases.
+
+When to Use:
+- You accidentally deleted a branch.
+- You performed a git reset --hard and lost work.
+- A rebase went wrong and you want to go back. 
+
+How to Undo a Rebase
+1. Find the state before the rebase:
+```bash
+git reflog
+```
+2. Locate the entry that says rebase (start) and look at the line directly below it (e.g., HEAD@{5}).
+
+3. Reset back to that moment:
+```bash
+git reset --hard HEAD@{n}
 ```
 
 <hr/>
