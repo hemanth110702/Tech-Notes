@@ -13,6 +13,7 @@
 - [Asymptotic NOtation & Growth of Functions](./1.Analysis%20of%20Algorithms%20Part-1.md#asymptotic-notation-growth-of-functions)
 - [Comparing of two functions](./1.Analysis%20of%20Algorithms%20Part-1.md#comparing-of-two-functions)
 - [Order of Growth](./1.Analysis%20of%20Algorithms%20Part-1.md#order-of-growth)
+- [General Terms to remember](./1.Analysis%20of%20Algorithms%20Part-1.md#general-terms-to-remember)
 - [Asymptotic Complexity - Examples](./1.Analysis%20of%20Algorithms%20Part-1.md#asymptotic-complexity-examples)
 - [Worksheet 1.1: Growth of Functions and Run-Time Estimation](./1.Analysis%20of%20Algorithms%20Part-1.md#worksheet-11-growth-of-functions-and-run-time-estimation)
 - [Worksheet 1.2: Asymptotic Complexity](./1.Analysis%20of%20Algorithms%20Part-1.md#worksheet-12-asymptotic-complexity)
