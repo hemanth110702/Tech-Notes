@@ -31,7 +31,10 @@ A practical cheat‑sheet for mastering Git and GitHub from basics to advanced w
 - [Feature Branch Workflow](#-feature-branch-workflow)
 - [Sync After Merge](#-sync-after-merge)
 - [Delete Branch](#delete-branch)
-- []
+- [Git Rebase](#git-rebase)
+- [Git Reflog](#git-reflog)
+- [Git Revert](#git-revert)
+- [Git: Revert vs Reflog vs Rebase](#-Git-Revert-vs-Reflog-vs-Rebase)
 - [Pro Tip](#-pro-tip)
 - [Reference](#reference)
 
@@ -248,7 +251,10 @@ git push origin main -f # Force-push the branch to the remote repository (it wil
 
 ```bash
 git clone <url> <folder_name>
+
 git fetch
+# The git fetch command is primarily used to safely download the latest commits, branches, and tags from a remote repository to your local machine without modifying your local working files
+
 git pull origin main
 git pull origin main --set-upstream
 ```
@@ -262,6 +268,7 @@ git pull origin main --set-upstream
 git branch feature1
 git checkout feature1
 git branch -D feature1
+git push origin --delete project/meme-page
 ```
 
 - `HEAD -> feature1` → current branch
@@ -339,7 +346,6 @@ git branch -D branch-name
 
 Rebasing is the process of moving or combining a sequence of commits to a new base commit. It is primarily used to maintain a clean, linear project history.
 
-### Interactive Rebase
 Use this to edit, squash, or reorder commits before they are shared.
 ```bash
 git rebase -i HEAD~n
@@ -375,6 +381,79 @@ git reset --hard HEAD@{n}
 ```
 
 <hr/>
+
+## Git Revert
+
+If the merge commit has been pushed to a shared or remote repository (like GitHub, GitLab, etc.), you should use git revert. This approach is safer for collaboration because it creates a new commit that undoes the changes of the merge, rather than rewriting the shared history.
+
+- **Identify the merge commit;**  Use git log --oneline --graph to find the hash (ID) of the specific merge commit you want to undo.
+- **Revert the merge commit:** Run the git revert command with the -m (mainline parent number) option:
+```bash
+git revert -m 1 <merge-commit-hash>
+```
+The -m 1 flag tells Git to keep the parent side of the merge that was the branch you merged into (e.g., main or master branch).
+
+- **Resolve conflicts (if any):** Git may pause and ask you to resolve conflicts if subsequent changes conflict with the revert. After resolving, use git add and then git commit to finalize the revert.
+
+- **Push the new revert commit:** Push the new commit to the remote repository:
+```bash
+git push origin <your-branch-name>
+```
+
+<hr/>
+
+## 📘 Git: Revert vs Reflog vs Rebase
+
+| Feature | git revert | git reflog | git rebase |
+|----------|------------|------------|------------|
+| Purpose | Undo a commit safely | View reference history | Rewrite commit history |
+| Rewrites history? | ❌ No | ❌ No (just logs) | ✅ Yes |
+| Safe for shared branches? | ✅ Yes | ⚠️ Yes (read-only) | ❌ No (avoid on shared branches) |
+| Creates new commit? | ✅ Yes (undo commit) | ❌ No | ❌ No (rewrites existing commits) |
+| Used for recovery? | ❌ Not mainly | ✅ Yes | ❌ Not mainly |
+| Used for cleaning history? | ❌ No | ❌ No | ✅ Yes |
+| Works on pushed commits? | ✅ Yes | ✅ Yes | ⚠️ Risky (needs force push) |
+| Typical Use Case | Undo a pushed commit | Recover lost commit | Clean up local commit history |
+|Synonym | Undo Safely | Time Machine | Rewrite History |
+
+---
+
+### 🔎 When to Use What?
+
+#### 🔵 Use `git revert` when:
+- You pushed a bad commit
+- You want to safely undo changes
+- You're working in a team
+- You don’t want to rewrite history
+
+Example:
+```bash
+git revert <commit-hash>
+```
+
+#### 🟢 Use git reflog when:
+
+- You accidentally reset or deleted a branch
+- You lost a commit
+- You need to find old HEAD positions
+- You want to recover something
+
+Example:
+```bash
+git reflog
+```
+
+#### 🟣 Use git rebase when:
+
+- You want clean commit history
+- You want to squash commits
+- You want linear history
+- You're working locally (before pushing)
+
+Example:
+```bash
+git rebase main
+```
 
 ## 🧠 Pro Tip
 
