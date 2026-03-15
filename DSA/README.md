@@ -2,7 +2,7 @@
 
 # My DSA Notes
 
-## [1. Analysis of Algorithms Part-1](./1.Analysis%20of%20Algorithms%20Part-1.md)
+## [Analysis of Algorithms Part-1](./1.Analysis%20of%20Algorithms%20Part-1.md)
 
   <details>
 
@@ -22,7 +22,7 @@
 
   </details>
 
-## [2. Analysis of Algorithms Part-2 (Problems)](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf)
+## [Analysis of Algorithms Part-2 (Problems)](./2.Analysis%20of%20Algorithms%20Part-2%20(Problems).pdf)
 
   <details>
 
@@ -41,6 +41,11 @@
 ## [Tricks](./Tricks.md)
 
 - [In-Place Two-Number Encoding Trick in Arrays](./Tricks.md#in-place-two-number-encoding-trick-in-arrays)
+
+## [Mathematics](./Mathematics.md)
+
+- [Key notes](./Mathematics.md#key-notes)
+- [GCD - Euclidean Algorithm](./Mathematics.md#gcd---euclidean-algorithm)
 
 ## [Arrays](./Arrays.md)
 
