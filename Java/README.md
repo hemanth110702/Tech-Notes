@@ -45,4 +45,11 @@
 - [Abstract Classes](./3.OOPS.md#abstract-classes)
 - [Interfaces in Java](./3.OOPS.md#interfaces-in-java)
 
+## [Java Collections Big-O Cheat Sheet](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md)
+
+- [List](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#List)
+- [Set](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#set)
+- [Queue](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#queue)
+- [Map](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#map)
+
 <p align="right"><a href="#top">⬆️ Back to Top</a></p>
