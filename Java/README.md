@@ -49,7 +49,13 @@
 
 - [List](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#List)
 - [Set](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#set)
-- [Queue](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#queue)
+- [Queue/Deque](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#queue--deque)
 - [Map](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#map)
+- [Vector](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#vector-legacy)
+- [Stack](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#stack-legacy)
+- [HashTable](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#hashtable-legacy)
+- [Golden Rules](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#-golden-rules-interview-ready)
+- [Avoids](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#-avoid-legacy)
+- [Defaults](./4.Java%20Collections%20Big-O%20Cheat%20Sheet.md#-defaults-always-safe)
 
 <p align="right"><a href="#top">⬆️ Back to Top</a></p>
