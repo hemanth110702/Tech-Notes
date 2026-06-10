@@ -2,11 +2,10 @@
 
 # JavaScript Reference Notes
 
-## Reference
+## Reference-1
 
-📚 Watch the course here: https://youtu.be/EerdGm-ehJQ
-
-Special Thanks to [SuperSimpleDev](https://www.youtube.com/@SuperSimpleDev)
+1. 📚 Watch the course here: https://youtu.be/EerdGm-ehJQ
+   <br>Special Thanks to [SuperSimpleDev](https://www.youtube.com/@SuperSimpleDev)
 
 ---
 
@@ -161,3 +160,47 @@ Special Thanks to [SuperSimpleDev](https://www.youtube.com/@SuperSimpleDev)
 - [Post request with fetch](./JavaScript.md#post-request-with-fetch)
 - [URL parameters](./JavaScript.md#url-parameters)
 - [Asynchronous code](./JavaScript.md#asynchronous-code--the-mental-model)
+
+---
+
+## Reference-2
+
+2. 📚 Watch the course here: [NamastaeDev - JavaScript](https://namastedev.com/learn/namaste-javascript)
+   <br>Special Thanks to [Akshay Saini](https://www.youtube.com/@akshaymarch7), [alok722](https://github.com/alok722/namaste-javascript-notes)
+
+<details>
+<summary>Table of contents</summary>
+
+  1. Episode 1 : Execution Context
+  2. Episode 2 : How JS is executed & Call Stack
+  3. Episode 3 : Hoisting in JavaScript (variables & functions)
+  4. Episode 4 : Functions and Variable Environments
+  5. Episode 5 : Shortest JS Program, window & this keyword
+  6. Episode 6 : undefined vs not defined in JS
+  7. Episode 7 : The Scope Chain, Scope & Lexical Environment
+  8. Episode 8 : let & const in JS, Temporal Dead Zone
+  9. Episode 9 : Block Scope & Shadowing in JS
+  10. Episode 10 : Closures in JS
+  11. Episode 11 : setTimeout + Closures Interview Question
+  12. Episode 12 : Famous Interview Questions ft. Closures
+  13. Episode 13 : First Class Functions ft. Anonymous Functions
+  14. Episode 14 : Callback Functions in JS ft. Event Listeners
+  15. Episode 15 : Asynchronous JavaScript & EVENT LOOP from
+  scratch
+  16. Episode 16 : JS Engine Exposed, Google's V8 Architecture
+  17. Episode 17 : Trust issues with setTimeout()
+  18. Episode 18 : Higher-Order Functions ft. Functional
+  Programming
+  19. Episode 19 : map, filter & reduce
+  20. Episode 20 : Callback
+  21. Episode 21 : Promises
+  22. Episode 22 : Creating a Promise, Chaining & Error Handling
+  23. Episode 23 : async await
+  24. Episode 24 : Promise APIs (all, allSettled, race, any) + Interview Questions 
+  25. Episode 25 : this keyword in JavaScript
+
+</details>
+
+## [Namaste-js-notes](./namaste-javascript-notes.pdf)
+
+
