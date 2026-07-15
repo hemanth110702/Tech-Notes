@@ -260,6 +260,8 @@ console.log(!false); // true   (NOT — flips the boolean)
 
 ### Truthy & Falsy
 
+Type coercion is automatic type conversion performed by JavaScript, whereas type casting is explicit type conversion performed by the programmer.
+
 In JavaScript, non-boolean values are coerced to booleans in conditions:
 
 ```js
@@ -271,6 +273,23 @@ if (cartQuantity) { ... } // runs if quantity is not 0
 
 console.log(!0)         // true
 console.log('text' / 5) // NaN — result of invalid math
+
+// Type Coersion (implicit conversion)
+console.log("5" + 2); //"52"
+console.log("5" - 2); //3
+
+// Type Casting
+let str = "5";
+let num = Number(str);
+
+console.log(num); //5
+
+Number("123")    // 123
+String(123)      // "123"
+Boolean(1)       // true
+// This manual conversion is called type casting.
+"5" + 2      // Coercion
+Number("5")  // Casting
 ```
 
 ### Ternary operator
@@ -417,7 +436,7 @@ const object4 = {
 ### Built-in string methods (strings are objects too)
 
 ```js
-Auto-Boxing
+Auto - Boxing;
 console.log("hello".length); // 5
 console.log("hello".toUpperCase()); // "HELLO"
 ```
