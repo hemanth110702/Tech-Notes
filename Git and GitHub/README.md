@@ -25,6 +25,7 @@ A practical cheat‑sheet for mastering Git and GitHub from basics to advanced w
 - [Connect to GitHub](#-connect-to-github)
 - [Push Code](#️-push-code)
 - [Clone / Pull](#️-clone--pull)
+- [Clean PRs](#-the-elite-fork--rebase-workflow-clean-prs)
 - [Branching](#-branching)
 - [Merging](#-merging)
 - [Merge Conflicts](#️-merge-conflicts)
@@ -259,6 +260,26 @@ git pull origin main
 git pull origin main --set-upstream
 ```
 
+## 📡 Fetch vs. Merge vs. Pull
+
+Understanding how Git moves data is what separates average developers from elite engineers.
+
+### 1. `git fetch` (The Scout)
+Downloads the latest metadata and commits from the remote server to your `.git` folder, but **does not touch your working files**. 
+
+* **When to use:** Use this constantly. It is a 100% safe way to see what your teammates have pushed to the remote server before you decide how to integrate it.
+
+### 2. `git merge` (The Smasher)
+Takes two separate timelines and smashes them together, generating a brand new "merge commit" to tie them in a knot. 
+* **When to use:** Use this when merging a completed feature branch into `main`. Do **not** use this to update your feature branch with changes from `main` (that creates diamond-shaped, messy history).
+
+### 3. `git pull` (The Automator)
+Literally just a macro command that runs `git fetch` followed immediately by `git merge`.
+* **When to use:** Use this ONLY when you are on `main` and simply want to fast-forward your local code to match the remote server. 
+
+> **🔥 Pro-Tip for Clean PRs:** 
+> Never run `git pull` while inside your feature branch. It will generate an ugly merge commit. Instead, use `git fetch origin` followed by `git rebase origin/main`. This perfectly lifts your work and places it on top of the latest changes, keeping the history strictly linear.
+
 <p align="right">(<a href="#top">back to top</a>)
 <hr/>
 
@@ -308,6 +329,67 @@ git commit -m "resolved conflict"
 ```
 
 <hr/>
+
+## 🚀 The Elite Fork & Rebase Workflow (Clean PRs)
+
+When working on a forked repository, avoid messy merge commits. Use this exact mechanical sequence to keep your feature branch synced with the original project and submit a pristine, linear Pull Request.
+
+### 1. Sync Your Local Machine
+
+After clicking "Sync fork" on GitHub, update your local `main` branch to match.
+
+```bash
+git checkout main
+git pull origin main
+```
+
+### 2. Create Your Feature Branch
+
+Always branch off a clean, up-to-date main.
+
+```bash
+git checkout -b feature/your-new-feature
+```
+(Write your code, and make your commits here).
+
+### 3. Fetch the Latest Truth
+
+If the original repo updates while you are working, sync your fork on GitHub again. Then, command your local machine to download the new map of the remote server WITHOUT changing your working files.
+
+```bash
+git fetch origin
+```
+
+### 4. Initiate the Rebase
+
+Rewrite your local timeline so your feature commits are placed perfectly on top of the newest `main` updates.
+
+```bash
+git rebase origin/main
+```
+
+### 5. Resolve Conflicts (If Any)
+
+If Git pauses due to a conflict:
+
+1. Open your IDE and manually accept the correct code.
+2. Stage the resolved files:
+```bash
+git add <file_name>
+```
+3. Command Git to continue replaying history (Do NOT run git commit):
+```bash
+git rebase --continue
+```
+
+### 6. Force Push the Clean Timeline
+
+Because you rewrote history, force the remote server to accept the new timeline safely.
+
+```bash
+git push --force-with-lease origin feature/your-new-feature
+```
+
 
 ## 🧪 Feature Branch Workflow
 
