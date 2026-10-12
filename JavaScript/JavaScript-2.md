@@ -18,6 +18,8 @@ Core JS internals for interview prep — Namaste JavaScript series.
 - [8. `let`, `const` & `var`](#8-let-const--var)
 - [8a. Block Scope & Shadowing](#8a-block-scope--shadowing)
 - [9. Closures](#9-closures)
+- [9a. Uses of Closures](#9a-uses-of-closures)
+- [9b. Closure Memory & V8 Internals](#9b-closure-memory--v8-internals)
 - [10. Event Loop & Async Model](#10-event-loop--async-model)
 - [11. Quick Summary Table](#11-quick-summary-table)
 
@@ -418,8 +420,80 @@ increment(); // 3
 
 > *"A closure is a function bundled together with its lexical environment — specifically, the outer variables it references. When the outer function returns, its execution context is popped off the stack, but JS keeps the lexical environment alive in memory because the inner function still holds a reference to it. This lets the inner function read and mutate those outer variables long after the outer function has finished. DevTools only shows `[[Closure]]` when there is at least one outer variable actually captured — if the inner function doesn’t reference anything from outside, there’s nothing to display."*
 
----
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
 
+## 9a. Uses of Closures
+
+- Module design pattern
+- Currying
+- Functions like `once` (run-only-once guards)
+- Memoization
+- Maintaining state in the async world
+- `setTimeout` / `setInterval` callbacks
+- Data privacy / encapsulation
+
+```js
+function x() {
+  var a = 5;
+  function y() {   // y forms a closure over 'a'
+    console.log(a);
+  }
+  return y;
+}
+
+var z = x();
+z(); // 5 — outer x() is gone, but 'a' is still alive via closure
+```
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 9b. Closure Memory & V8 Internals
+
+> **V8 creates one shared Closure Context object per outer function scope** — not one per inner function.
+
+### How It Works (Step by Step)
+
+1. A function is invoked → local memory space created.
+2. If **any** inner function references an outer variable, V8 creates a single **hidden Closure Context object on the heap**.
+3. V8 copies every variable referenced by **any** inner function into this one shared object.
+4. All inner functions created in that scope are handed a **pointer to the same shared object**.
+
+> You don't have multiple isolated closures — you have **one shared closure context per outer function**, and every inner function is tethered to it.
+
+### Memory Management & Closure Leak
+
+```js
+function factory() {
+  const massiveData = new Array(1000000).fill('data');
+  const secretKey = 'alpha-1';
+
+  const helper = function() {
+    console.log(massiveData); // helper captures massiveData → goes into shared context
+  };
+
+  // Even though helper is not returned, massiveData stays alive
+  // because it's in the shared closure context — execute holds that context.
+  // Fix: nullify massiveData before returning execute.
+  // massiveData = null; ← frees the heap reference
+
+  return function execute() {
+    console.log(`Executing with key: ${secretKey}`);
+  };
+}
+
+const myFunc = factory();
+// execute only needs secretKey, but massiveData is also kept alive
+// in the shared closure context because helper captured it.
+```
+
+> ⚠️ **Closure leak gotcha:** If one inner function captures a large variable, that variable stays alive for the lifetime of **all** returned closures from that scope — even if the returning function never uses it. Null it out explicitly when done.
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+---
 ## 10. Event Loop & Async Model
 
 ```
@@ -463,3 +537,4 @@ console.log("4");
 | Closure | Inner fn retains outer lexical env after outer returns |
 | Microtask Queue | Runs before Macrotask (Promises) |
 | Macrotask Queue | Runs after microtasks clear (setTimeout) |
+
