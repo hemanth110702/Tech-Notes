@@ -37,6 +37,7 @@
 - [Common Utility Methods](./2.Java%20Utilities%20&%20Collections.md#common-utility-methods)
 - [Java Arrays](./2.Java%20Utilities%20&%20Collections.md#java-arrays)
 - [Collections](./2.Java%20Utilities%20&%20Collections.md#collections)
+  - [LinkedList](./2.Java%20Utilities%20&%20Collections.md#linkedlist)
 
 ## [OOPS Concepts](./3.OOPS.md)
 
