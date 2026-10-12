@@ -1,11 +1,14 @@
-# JavaScript Course — Study Notes
+<div id="top"></div>
 
-A complete reference for every topic covered in this course -
-📚 Watch the course here: https://youtu.be/EerdGm-ehJQ
+# 📒 JavaScript Course — Study Notes
+
+A complete reference for every topic covered in this course.
+📚 [Watch the course](https://youtu.be/EerdGm-ehJQ) · Special Thanks to [SuperSimpleDev](https://www.youtube.com/@SuperSimpleDev)
 
 ---
 
-## Table of Contents
+<details>
+<summary>Table of contents</summary>
 
 1. [Lesson 1 — JavaScript Basics](#lesson-1--javascript-basics)
 2. [Lesson 2 — Numbers & Math](#lesson-2--numbers--math)
@@ -27,7 +30,10 @@ A complete reference for every topic covered in this course -
 18. [Lesson 18 — OOP & Backend Basics](#lesson-18--oop--backend-basics)
 19. [Lesson 19 — Backend, Callbacks, Promises & Async/Await](#lesson-19--backend-callbacks-promises--asyncawait)
 
+</details>
+
 ---
+
 
 ## Lesson 1 — JavaScript Basics
 

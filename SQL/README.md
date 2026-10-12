@@ -1,4 +1,10 @@
-# Database Notes Index
+<div id="top"></div>
+
+# 📘 SQL & Database Notes
+
+Quick-reference notes for SQL and database concepts — built for fast recall and interview prep.
+
+
 
 ## [Introduction](./Introduction.md) 
 

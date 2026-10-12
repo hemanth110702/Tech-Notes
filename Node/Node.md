@@ -1,10 +1,27 @@
-# To create a node backend
-```
+<div id="top"></div>
+
+# 🟢 Node.js — Quick Reference
+
+A quick-reference stub for Node.js fundamentals. More notes will be added here as learning progresses.
+
+<details>
+<summary>Table of contents</summary>
+
+- [Node.js Basics](#-nodejs-basics)
+
+</details>
+
+---
+
+## 🧠 Node.js Basics
+
+* **Node.js** is a runtime environment that allows you to run JavaScript on the server side (outside the browser).
+* **Express** is a web framework built on top of Node.js — makes building servers and handling HTTP requests easier.
+
+```bash
+# Initialize a new Node project
 npm init
 ```
 
-Node.js is a runtime environment. 
-It allows you to run JavaScript code on the server side instead of just in the browser
-
-
-Express is a web framework built on top of Node.js. It makes building web servers and handling requests easier
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>

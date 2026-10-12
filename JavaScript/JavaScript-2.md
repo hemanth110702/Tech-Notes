@@ -1,4 +1,27 @@
-# JavaScript — Interview Quick Reference
+<div id="top"></div>
+
+# 📒 JavaScript — Interview Quick Reference
+
+Core JS internals for interview prep — Namaste JavaScript series.
+📚 [Namaste JavaScript](https://namastedev.com/learn/namaste-javascript) · Special Thanks to [Akshay Saini](https://www.youtube.com/@akshaymarch7)
+
+<details>
+<summary>Table of contents</summary>
+
+- [1. Core Nature](#1-core-nature)
+- [2. Execution Context](#2-execution-context)
+- [3. Hoisting](#3-hoisting)
+- [4. The Call Stack](#4-the-call-stack)
+- [5. `this` & the Global Object](#5-this--the-global-object)
+- [6. `undefined` vs `not defined`](#6-undefined-vs-not-defined)
+- [7. Scope & Lexical Environment](#7-scope--lexical-environment)
+- [8. `let`, `const` & `var`](#8-let-const--var)
+- [8a. Block Scope & Shadowing](#8a-block-scope--shadowing)
+- [9. Closures](#9-closures)
+- [10. Event Loop & Async Model](#10-event-loop--async-model)
+- [11. Quick Summary Table](#11-quick-summary-table)
+
+</details>
 
 ---
 
