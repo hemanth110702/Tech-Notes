@@ -20,8 +20,9 @@ Core JS internals for interview prep — Namaste JavaScript series.
 - [9. Closures](#9-closures)
 - [9a. Uses of Closures](#9a-uses-of-closures)
 - [9b. Closure Memory & V8 Internals](#9b-closure-memory--v8-internals)
-- [10. Event Loop & Async Model](#10-event-loop--async-model)
-- [11. Quick Summary Table](#11-quick-summary-table)
+- [10. setTimeout & Closures](#10-settimeout--closures)
+- [11. Event Loop & Async Model](#11-event-loop--async-model)
+- [12. Quick Summary Table](#12-quick-summary-table)
 
 </details>
 
@@ -420,6 +421,8 @@ increment(); // 3
 
 > *"A closure is a function bundled together with its lexical environment — specifically, the outer variables it references. When the outer function returns, its execution context is popped off the stack, but JS keeps the lexical environment alive in memory because the inner function still holds a reference to it. This lets the inner function read and mutate those outer variables long after the outer function has finished. DevTools only shows `[[Closure]]` when there is at least one outer variable actually captured — if the inner function doesn’t reference anything from outside, there’s nothing to display."*
 
+> ⚠️ **Snapshot vs. Reference:** Closures capture a **reference to the variable binding**, NOT a snapshot of its value at declaration time. If code modifies a variable after scheduling a callback, the callback reads the **updated value** when it runs — because the value is read at invocation time, not at creation time.
+
 <p align="right">(<a href="#top">back to top</a>)
 <hr/>
 
@@ -493,12 +496,80 @@ const myFunc = factory();
 <p align="right">(<a href="#top">back to top</a>)
 <hr/>
 
----
-## 10. Event Loop & Async Model
+## 10. setTimeout & Closures
 
+> `setTimeout` callbacks form a **closure** over the variables in their enclosing scope. Whether they capture the same binding or a fresh one depends on `var` vs `let`.
+
+### Ex 1 — Basic closure capture with `var`
+
+```js
+function fun() {
+  var i = 5;
+  setTimeout(() => {
+    console.log(i); // 5 — closure over 'i', logged after 1s
+  }, 1000);
+  console.log("JavaScript"); // runs immediately (sync)
+}
+fun();
+// Output: "JavaScript" → 5
 ```
-Call Stack → (empty?) → drain Microtask Queue → pick next Macrotask → repeat
+
+> The sync `console.log` runs first; the callback fires after 1 s and reads `i` from its closed-over scope.
+
+### Ex 2 — `let` gives each iteration its own binding
+
+```js
+function fun() {
+  for (let i = 1; i <= 5; i++) {
+    setTimeout(() => {
+      console.log(i); // 1, 2, 3, 4, 5 — each callback closes over its own 'i'
+    }, i * 1000);
+  }
+}
+fun();
+// Output: 1 (after 1s), 2 (after 2s), 3 (after 3s), 4 (after 4s), 5 (after 5s)
 ```
+
+> `let` is re-bound per iteration — each closure captures a distinct `i`.
+
+### Ex 3 — Fixing `var` with a wrapper function (classic IIFE pattern)
+
+```js
+function fun() {
+  for (var i = 1; i <= 5; i++) {
+    function count(x) {
+      setTimeout(() => {
+        console.log(x); // 1, 2, 3, 4, 5
+      }, x * 1000);
+    }
+    count(i); // each call to count() creates a new scope with its own 'x'
+  }
+}
+fun();
+// Output: 1 (after 1s), 2 (after 2s), 3 (after 3s), 4 (after 4s), 5 (after 5s)
+```
+
+> `var i` is shared across all iterations, so without the wrapper every callback would log `6`. Passing `i` into `count(x)` gives each callback its own frozen copy.
+
+| Feature | `var` in loops | `let` in loops |
+|:---|:---|:---|
+| **Scope** | Function / Global scope | Block scope `{}` |
+| **Binding count** | One shared instance for all iterations | Brand-new binding created per iteration |
+| **Closure behavior** | Every callback sees the same variable — reads the **final loop value** | Each callback captures its own isolated iteration value |
+| **Pre-ES6 fix** | Wrap in IIFE or helper function (`count(x)`) to create a fresh scope per pass | `let` handles it natively |
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 11. Event Loop & Async Model
+
+### Execution Priority Chain
+
+**Call Stack (Sync) → Microtask Queue (drain all) → Macrotask Queue (one at a time)**
+
+1. **Synchronous code** — runs line-by-line on the Call Stack until empty.
+2. **Microtasks** (`Promise.then`, `queueMicrotask`, `process.nextTick`) — highest async priority; the engine completely drains the queue before touching any macrotask or rendering.
+3. **Macrotasks** (`setTimeout`, `setInterval`, `setImmediate`, I/O) — picked up one at a time, only when the Call Stack **and** Microtask Queue are both empty.
 
 | Component | Role | Examples |
 |---|---|---|
@@ -506,8 +577,6 @@ Call Stack → (empty?) → drain Microtask Queue → pick next Macrotask → re
 | **Web APIs / libuv** | Handles async tasks off-thread | fetch, timers, I/O |
 | **Microtask Queue** | High-priority; runs before macrotasks | `Promise.then`, `queueMicrotask` |
 | **Macrotask Queue** | Lower-priority | `setTimeout`, `setInterval`, I/O callbacks |
-
-**Golden Rule:** The Event Loop empties the **entire Microtask Queue** before picking the next Macrotask.
 
 ```js
 console.log("1");
@@ -517,9 +586,16 @@ console.log("4");
 // Output: 1 → 4 → 3 → 2
 ```
 
+### 🎯 3-Step Mental Trace Model
+
+When reading any async snippet:
+1. **Trace sync first** — run all top-level statements, note variable mutations, push callbacks to Micro/Macro queues.
+2. **Drain microtasks** — execute all Promise callbacks in FIFO order; closure variables read their **current** value at invocation time.
+3. **Process macrotasks** — pop one at a time; if a macrotask queues a new microtask, that microtask runs before the next macrotask.
+
 ---
 
-## 11. Quick Summary Table
+## 12. Quick Summary Table
 
 | Concept | Key Takeaway |
 |---|---|
