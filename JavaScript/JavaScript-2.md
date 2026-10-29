@@ -22,7 +22,8 @@ Core JS internals for interview prep — Namaste JavaScript series.
 - [9b. Closure Memory & V8 Internals](#9b-closure-memory--v8-internals)
 - [10. setTimeout & Closures](#10-settimeout--closures)
 - [11. Event Loop & Async Model](#11-event-loop--async-model)
-- [12. Quick Summary Table](#12-quick-summary-table)
+- [12. First-Class Functions & Function Types](#12-first-class-functions--function-types)
+- [13. Quick Summary Table](#13-quick-summary-table)
 
 </details>
 
@@ -436,6 +437,12 @@ increment(); // 3
 - `setTimeout` / `setInterval` callbacks
 - Data privacy / encapsulation
 
+### ⚠️ Disadvantages of Closures
+
+- **Memory Consumption**: Closed-over variables are stored in heap memory and cannot be garbage-collected as long as the closure reference is reachable.
+- **Risk of Memory Leaks**: Uncleaned closures (e.g. neglected event listeners, intervals, or large unused variables trapped in scope) consume memory indefinitely if not dereferenced.
+- **Performance Overhead**: Resolving identifiers across nested outer scopes requires scope-chain traversal; excessive closures add heap allocation costs compared to standard functions.
+
 ```js
 function x() {
   var a = 5;
@@ -593,9 +600,119 @@ When reading any async snippet:
 2. **Drain microtasks** — execute all Promise callbacks in FIFO order; closure variables read their **current** value at invocation time.
 3. **Process macrotasks** — pop one at a time; if a macrotask queues a new microtask, that microtask runs before the next macrotask.
 
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 12. First-Class Functions & Function Types
+
+> In JavaScript, functions are **first-class citizens** (first-class objects) — they can be treated like any other value (assigned to variables, passed as arguments, and returned from functions).
+
+### Function Statement vs. Function Expression
+
+The defining technical difference between a Function Statement (Declaration) and a Function Expression is **hoisting**.
+
+```js
+a(); // ✅ Works: "a called"
+b(); // ❌ TypeError: b is not a function
+
+// Function Statement (aka Function Declaration)
+function a() {
+  console.log("a called");
+}
+
+// Function Expression
+var b = function () {
+  console.log("b called");
+};
+```
+
+| Type | Syntax | Hoisting Behavior | Early Invocation |
+|---|---|---|---|
+| **Function Statement** (Declaration) | `function a() {}` | Fully hoisted with body definition | ✅ Executes normally |
+| **Function Expression** (`var`) | `var b = function() {}` | Variable hoisted as `undefined` | ❌ `TypeError: b is not a function` |
+| **Function Expression** (`let`/`const`) | `const b = function() {}` | Hoisted in TDZ (uninitialized) | ❌ `ReferenceError: Cannot access 'b'` |
+
 ---
 
-## 12. Quick Summary Table
+### Anonymous Functions
+
+A function without an identifier (name).
+
+```js
+// Standalone anonymous function -> SyntaxError
+// function () {} // SyntaxError: Function statements require a function name
+
+// Used as a value (Expression)
+var greet = function () {
+  console.log("Hello");
+};
+```
+
+> ⚠️ **Syntax Rule:** ECMAScript requires function statements to have a name. An anonymous function cannot stand alone as a statement; it must be used as an expression (assigned to a variable, passed as a callback, or wrapped in an IIFE).
+
+---
+
+### Named Function Expression
+
+A function expression where the function has an internal identifier.
+
+```js
+var c = function fun() {
+  console.log(fun); // ✅ Works — 'fun' exists inside its own local scope
+  console.log("c called");
+};
+
+c();     // ✅ Works: "c called"
+fun();   // ❌ ReferenceError: fun is not defined
+```
+
+> ⚠️ **Scope Trap:** The identifier `fun` is **not** created in the outer enclosing scope. It is bound strictly inside the function's own local environment record (useful for recursion and stack traces). Outside callers must invoke `c()`.
+
+---
+
+### Parameters vs. Arguments
+
+| Concept | Definition | Example |
+|---|---|---|
+| **Parameters** | Identifiers declared in the function definition (placeholders) | `function abc(param1, param2) {}` |
+| **Arguments** | Actual values/expressions passed to the function at invocation | `abc("val1", 42)` |
+
+---
+
+### First-Class Functions (First-Class Citizens)
+
+The ability of functions to be treated as values:
+1. **Assigned to a variable** or stored in data structures.
+2. **Passed as arguments** to other functions (callbacks).
+3. **Returned from other functions** (higher-order functions / closures).
+
+```js
+// 1. Pass function as an argument (Callback)
+function greet(callback) {
+  callback();
+}
+
+function sayHi() {
+  console.log("Hi!");
+}
+
+greet(sayHi); // Passed as argument
+
+// 2. Return a function from another function (Higher-Order Function)
+function outer() {
+  return function () {
+    console.log("Returned inner function");
+  };
+}
+
+const innerFn = outer();
+innerFn();
+```
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 13. Quick Summary Table
 
 | Concept | Key Takeaway |
 |---|---|
@@ -604,6 +721,7 @@ When reading any async snippet:
 | `let`/`const` hoisting | TDZ → `ReferenceError` if accessed early |
 | Function Declaration | Fully hoisted — callable before declaration |
 | Function Expression / Arrow | `undefined` → `TypeError` if called early |
+| First-Class Functions | Functions treated as values (pass, return, assign) |
 | Call Stack | LIFO — manages execution context order |
 | `this` at global scope | `window` (browser) / `global` (Node) |
 | `undefined` | Declared, not yet assigned |
@@ -613,4 +731,3 @@ When reading any async snippet:
 | Closure | Inner fn retains outer lexical env after outer returns |
 | Microtask Queue | Runs before Macrotask (Promises) |
 | Macrotask Queue | Runs after microtasks clear (setTimeout) |
-

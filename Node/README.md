@@ -8,7 +8,7 @@ Quick-reference notes for Node.js — built for fast recall and interview prep.
 
 | File | Topics Covered |
 |---|---|
-| [Node.js Basics](./Node.md) | Runtime environment, Express intro, project setup |
+| [Node.js Basics](./Node.md) | Runtime environment, Express intro, V8 & libuv architecture, Event Loop & Queue priorities |
 
 ---
 
