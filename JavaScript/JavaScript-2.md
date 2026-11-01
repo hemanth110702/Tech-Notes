@@ -23,7 +23,8 @@ Core JS internals for interview prep — Namaste JavaScript series.
 - [10. setTimeout & Closures](#10-settimeout--closures)
 - [11. Event Loop & Async Model](#11-event-loop--async-model)
 - [12. First-Class Functions & Function Types](#12-first-class-functions--function-types)
-- [13. Quick Summary Table](#13-quick-summary-table)
+- [13. Callback Functions & Event Listeners](#13-callback-functions--event-listeners)
+- [14. Quick Summary Table](#14-quick-summary-table)
 
 </details>
 
@@ -712,7 +713,109 @@ innerFn();
 <p align="right">(<a href="#top">back to top</a>)
 <hr/>
 
-## 13. Quick Summary Table
+
+## 13. Callback Functions & Event Listeners
+
+A **callback function** is a function passed as an argument to another function, which is then invoked inside that function to execute a routine or action.
+
+```js
+// Synchronous Callback Example
+function x(y) {
+  console.log("x");
+  y(); // y is the callback function
+}
+
+x(function y() {
+  console.log("y");
+});
+// Output: "x" → "y"
+```
+
+---
+
+### ⚡ The Power of Callbacks (Async in Single-Threaded JS)
+
+JavaScript is **synchronous and single-threaded** — it has only one Call Stack and can execute only one command at a time.
+
+- Callbacks enable asynchronous behavior by delegating tasks to browser Web APIs (timers, network requests, DOM events).
+- The main thread does not wait; the callback runs later via the Event Loop once the Call Stack is empty.
+
+```js
+// Asynchronous Callback Example
+console.log("Start");
+
+setTimeout(function () {
+  console.log("Timer finished (5s)");
+}, 5000);
+
+console.log("End");
+// Output: "Start" → "End" → (after 5s) "Timer finished (5s)"
+```
+
+---
+
+### 🎧 Closures with Event Listeners
+
+Event listeners commonly rely on closures to maintain private state across user interactions without polluting the global scope.
+
+```html
+<button id="my-btn">Click Me</button>
+```
+
+```js
+function attachClickListener() {
+  let count = 0; // Data-hiding via closure
+
+  document.querySelector("#my-btn").addEventListener("click", function handleClick() {
+    console.log("Button clicked:", ++count);
+  });
+}
+
+attachClickListener();
+```
+
+#### Scope Inspection in DevTools
+When inspecting the `#my-btn` listener in Chrome DevTools (**Elements → Event Listeners** tab, or setting a breakpoint inside `handleClick`):
+1. **Local Scope:** Variables local to `handleClick`.
+2. **Closure (`attachClickListener`):** Retains persistent access to `count` in the heap between clicks.
+3. **Global Scope (`Window`):** Outer global environment record.
+
+---
+
+### 🧹 Garbage Collection & `removeEventListener`
+
+Event listeners are heavy because they retain closures over their entire enclosing lexical environment.
+
+| State | Memory Impact | Garbage Collection (GC) |
+|---|---|---|
+| **Active Listener Attached** | Retains all closed-over outer variables in heap memory | **Not collected** (DOM node holds reference to handler) |
+| **Listener Removed** | References to handler and outer scope severed | **Garbage collected** (heap memory reclaimed) |
+
+> ⚠️ **Memory Leak Warning:** As long as a listener remains attached to a DOM node, the JS engine's Garbage Collector cannot free the variables captured in its closure. In SPAs or long-lived apps, unremoved listeners accumulate and cause memory leaks.
+
+> 💡 **Reference Rule:** `removeEventListener()` requires the **exact same function reference**. Anonymous inline callbacks cannot be removed.
+
+```js
+// ❌ Memory Leak Risk: Anonymous callback cannot be removed
+btn.addEventListener("click", function () {
+  console.log("Clicked");
+});
+
+// ✅ Best Practice: Named reference enables deterministic cleanup
+function handleClick() {
+  console.log("Clicked");
+}
+
+btn.addEventListener("click", handleClick);
+
+// Clean up when element or component unmounts:
+btn.removeEventListener("click", handleClick);
+```
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 14. Quick Summary Table
 
 | Concept | Key Takeaway |
 |---|---|
@@ -722,6 +825,8 @@ innerFn();
 | Function Declaration | Fully hoisted — callable before declaration |
 | Function Expression / Arrow | `undefined` → `TypeError` if called early |
 | First-Class Functions | Functions treated as values (pass, return, assign) |
+| Callback Function | Function passed as argument; enables async non-blocking execution |
+| Event Listener Cleanup | Handlers retain closures in heap; remove with `removeEventListener` to prevent memory leaks |
 | Call Stack | LIFO — manages execution context order |
 | `this` at global scope | `window` (browser) / `global` (Node) |
 | `undefined` | Declared, not yet assigned |
@@ -731,3 +836,6 @@ innerFn();
 | Closure | Inner fn retains outer lexical env after outer returns |
 | Microtask Queue | Runs before Macrotask (Promises) |
 | Macrotask Queue | Runs after microtasks clear (setTimeout) |
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
