@@ -26,7 +26,9 @@ Core JS internals for interview prep — Namaste JavaScript series.
 - [13. Callback Functions & Event Listeners](#13-callback-functions--event-listeners)
 - [14. JS Engine Architecture & Google V8](#14-js-engine-architecture--google-v8)
 - [15. Trust Issues with setTimeout()](#15-trust-issues-with-settimeout)
-- [16. Quick Summary Table](#16-quick-summary-table)
+- [16. Higher-Order Functions & Polyfills](#16-higher-order-functions--polyfills)
+- [17. Functional Array Methods — map, filter & reduce](#17-functional-array-methods--map-filter--reduce)
+- [18. Quick Summary Table](#18-quick-summary-table)
 
 </details>
 
@@ -983,7 +985,322 @@ console.log("C");
 <p align="right">(<a href="#top">back to top</a>)
 <hr/>
 
-## 16. Quick Summary Table
+## 16. Higher-Order Functions & Polyfills
+
+A **Higher-Order Function (HOF)** is any function that fulfills at least one of these two criteria:
+1. **Takes one or more functions as arguments** (parameters).
+2. **Returns a function** as its result.
+
+The function passed into an HOF as an argument is known as a **Callback Function**.
+
+```js
+function x() {
+  console.log("hello");
+}
+
+function y(x) { // y is the Higher-Order Function, x is the Callback Function
+  x();
+}
+
+y(x);
+```
+
+---
+
+### 🧱 Functional Programming & The DRY Principle
+
+Functional programming emphasizes breaking code into small, pure, reusable units rather than writing monolithic procedural blocks.
+
+#### The Problem: Repetitive Procedural Code (Violating DRY)
+Calculating area, circumference, and diameter across an array of radii naively requires repeating 90% of the iteration and memory-allocation logic:
+
+```js
+const radius = [3, 1, 2, 4];
+
+// ❌ Repetitive: Each function duplicates the for-loop, output array, and push logic
+const calculateArea = function (radius) {
+  const output = [];
+  for (let i = 0; i < radius.length; i++) {
+    output.push(Math.PI * radius[i] * radius[i]);
+  }
+  return output;
+};
+
+const calculateCircumference = function (radius) {
+  const output = [];
+  for (let i = 0; i < radius.length; i++) {
+    output.push(2 * Math.PI * radius[i]);
+  }
+  return output;
+};
+```
+
+#### The Solution: Decouple Traversal from Logic (Functional Approach)
+Separate the **iteration mechanism** (HOF) from the **business calculation** (pure callback functions):
+
+```js
+const radius = [3, 1, 2, 4];
+
+// Pure transformation logic (Single Responsibility)
+const area = function (r) {
+  return Math.PI * r * r;
+};
+
+const circumference = function (r) {
+  return 2 * Math.PI * r;
+};
+
+const diameter = function (r) {
+  return 2 * r;
+};
+
+// Generic Higher-Order Function: handles array traversal
+const calculate = function (arr, logic) {
+  const output = [];
+  for (let i = 0; i < arr.length; i++) {
+    output.push(logic(arr[i]));
+  }
+  return output;
+};
+
+console.log(calculate(radius, area));          // [ ~28.27, ~3.14, ~12.57, ~50.27 ]
+console.log(calculate(radius, circumference)); // [ ~18.85, ~6.28, ~12.57, ~25.13 ]
+console.log(calculate(radius, diameter));      // [ 6, 2, 4, 8 ]
+```
+
+| Aspect | Procedural Approach | Higher-Order Function Approach |
+|---|---|---|
+| **DRY Principle** | ❌ Violates DRY (repeats loops & push logic) | ✅ Follows DRY (loop written once) |
+| **Separation of Concerns** | Iteration & math coupled together | Iteration separated from mathematical logic |
+| **Reusability** | Restricted to one computation | Works with any transformation callback |
+| **Testability** | Harder to test isolated formulas | Each callback formula is easily unit-tested |
+
+---
+
+### 🧬 Creating a Polyfill for `Array.prototype.map`
+
+`calculate(radius, area)` mimics the exact behavior of JavaScript’s native `Array.prototype.map()`.
+
+We can turn `calculate` into a true polyfill by attaching it to `Array.prototype`:
+
+```js
+// Polyfill for Array.prototype.map
+Array.prototype.calculate = function (logic) {
+  const output = [];
+  // 'this' refers to the array instance calling .calculate()
+  for (let i = 0; i < this.length; i++) {
+    output.push(logic(this[i]));
+  }
+  return output;
+};
+
+const radius = [3, 1, 2, 4];
+
+console.log(radius.calculate(area)); // Custom prototype method
+console.log(radius.map(area));       // Native JS engine method
+// Both produce the exact same array!
+```
+
+> 💡 **Under the Hood (`this` binding):** When `radius.calculate(area)` executes, `this` inside the prototype function dynamically binds to the `radius` array instance.
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 17. Functional Array Methods — map, filter & reduce
+
+`map`, `filter`, and `reduce` are standard **Higher-Order Functions** built into `Array.prototype`. They iterate over an array immutably (they do not mutate the original array, but return a new array or value).
+
+| Method | Core Purpose | Return Type | Output Length |
+|---|---|---|---|
+| **`map()`** | Transform every element with a mapping function | New Array | Always identical (`output.length === input.length`) |
+| **`filter()`** | Select elements that satisfy a boolean condition | New Array | Variable (`0 <= output.length <= input.length`) |
+| **`reduce()`** | Boil down an entire array into a single accumulated result | Any Value (Number, String, Object, Array) | Single accumulated entity |
+
+---
+
+### 🗺️ Array.prototype.map()
+
+Used to transform each element of an array according to a callback function:
+- **Callback Signature:** `(currentValue, index, array) => transformedValue`
+- **Guarantee:** Never changes the length of the original array; performs a strict 1-to-1 transformation.
+
+```js
+const arr = [5, 1, 3, 2, 6];
+
+// Transformation callbacks
+function double(x) {
+  return 2 * x;
+}
+
+function triple(x) {
+  return 3 * x;
+}
+
+function binary(x) {
+  return x.toString(2); // Radix 2 for binary string representation
+}
+
+// 1. Passing a named function reference
+console.log(arr.map(double)); // [10, 2, 6, 4, 12]
+console.log(arr.map(triple)); // [15, 3, 9, 6, 18]
+console.log(arr.map(binary)); // ['101', '1', '11', '10', '110']
+
+// 2. Inline arrow function (concise)
+console.log(arr.map((x) => x.toString(2)));
+
+// 3. Inline anonymous function statement
+console.log(arr.map(function (val) {
+  return val.toString(2);
+}));
+```
+
+---
+
+### 🔍 Array.prototype.filter()
+
+Used to filter an array based on a **predicate function** (a callback returning a truthy or falsy value):
+- If the callback returns `true`, the element is included in the new array.
+- If `false`, the element is excluded.
+
+```js
+const arr = [5, 1, 3, 2, 6];
+
+// Filter elements strictly greater than 4
+const greaterThan4 = arr.filter((x) => x > 4);
+console.log(greaterThan4); // [5, 6]
+
+// Filter elements strictly less than 3
+const lessThan3 = arr.filter((x) => x < 3);
+console.log(lessThan3); // [1, 2]
+
+// Filter multiples of 3
+const multiplesOf3 = arr.filter((x) => x % 3 === 0);
+console.log(multiplesOf3); // [3, 6]
+```
+
+---
+
+### 🔄 Array.prototype.reduce()
+
+Used when you need to iterate through an array and aggregate or accumulate its elements into a **single output** (such as a sum, maximum value, grouped object, or flattened array).
+
+#### Method Signature & Anatomy
+```js
+arr.reduce(function (accumulator, currentValue, index, array) {
+  // return updated accumulator
+}, initialValue);
+```
+
+- **`accumulator` (`acc`)**: Stores the accumulated result from previous iterations. On iteration 1, it equals `initialValue`.
+- **`currentValue` (`curr`)**: The current array element being processed.
+- **`initialValue`**: The starting value passed to the accumulator. *(Always pass an explicit initial value to avoid edge cases on empty arrays!)*
+
+#### 1. Sum of an Array
+```js
+const arr = [5, 1, 3, 2, 6];
+
+const sum = arr.reduce(function (acc, curr) {
+  acc += curr;
+  return acc;
+}, 0);
+
+console.log(sum); // 17
+```
+
+**Accumulator Trace Table:**
+
+| Iteration | `acc` (Start of step) | `curr` | `acc + curr` | Returned to next iteration |
+|---|---|---|---|---|
+| Step 1 | `0` *(initialValue)* | `5` | `0 + 5 = 5` | `5` |
+| Step 2 | `5` | `1` | `5 + 1 = 6` | `6` |
+| Step 3 | `6` | `3` | `6 + 3 = 9` | `9` |
+| Step 4 | `9` | `2` | `9 + 2 = 11` | `11` |
+| Step 5 | `11` | `6` | `11 + 6 = 17` | **Final Return: `17`** |
+
+#### 2. Finding the Maximum Value
+```js
+const maxVal = arr.reduce(function (max, curr) {
+  if (curr > max) {
+    max = curr;
+  }
+  return max;
+}, 0);
+
+console.log(maxVal); // 6
+```
+
+---
+
+### ⚡ Practical Scenarios & Method Chaining
+
+Working with complex data structures (objects) in real-world applications:
+
+```js
+const data = [
+  { firstName: "decider", secondName: "2002", age: 25 },
+  { firstName: "dead", secondName: "pool", age: 46 },
+  { firstName: "ken", secondName: "miles", age: 50 },
+  { firstName: "cristiano", secondName: "ronaldo", age: 46 }
+];
+```
+
+#### 1. Transform Objects to Array of Strings (`map`)
+```js
+// List of full names
+const fullNames = data.map((x) => `${x.firstName} ${x.secondName}`);
+console.log(fullNames);
+// ['decider 2002', 'dead pool', 'ken miles', 'cristiano ronaldo']
+```
+
+#### 2. Frequency Map / Grouping by Property (`reduce`)
+Tally counts of distinct properties into an accumulator object:
+
+```js
+// Count people by age: { 25: 1, 46: 2, 50: 1 }
+const ageTally = data.reduce(function (acc, curr) {
+  if (!acc[curr.age]) {
+    acc[curr.age] = 1;
+  } else {
+    acc[curr.age] = ++acc[curr.age];
+  }
+  return acc;
+}, {});
+
+console.log(ageTally); // { 25: 1, 46: 2, 50: 1 }
+```
+
+#### 3. Method Chaining (`filter` + `map`)
+Find first names of people whose age is strictly greater than 30:
+
+```js
+const over30Names = data
+  .filter((x) => x.age > 30)
+  .map((x) => x.firstName);
+
+console.log(over30Names); // ['dead', 'ken', 'cristiano']
+```
+
+#### 4. Pro Interview Pattern: Single-Pass `filter` + `map` via `reduce`
+Instead of chaining `.filter().map()` (which traverses the array twice and creates an intermediate array in memory), use `reduce` with an empty array `[]` accumulator to filter and extract in a **single $O(N)$ pass**:
+
+```js
+// People with age < 50: single-pass filter + projection
+const under50Names = data.reduce(function (acc, curr) {
+  if (curr.age < 50) {
+    acc.push(curr.firstName); // Filters and maps simultaneously
+  }
+  return acc;
+}, []);
+
+console.log(under50Names); // ['decider', 'dead', 'cristiano']
+```
+
+> 💡 **Performance Note:** Chaining `.filter().map()` creates an intermediate array in heap memory between passes. In performance-critical hot loops with large datasets, a single `reduce` pass is more cache-friendly and avoids extra heap allocations.
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 18. Quick Summary Table
 
 | Concept | Key Takeaway |
 |---|---|
@@ -994,6 +1311,12 @@ console.log("C");
 | Function Expression / Arrow | `undefined` → `TypeError` if called early |
 | First-Class Functions | Functions treated as values (pass, return, assign) |
 | Callback Function | Function passed as argument; enables async non-blocking execution |
+| Higher-Order Function (HOF) | Function that accepts another function as argument or returns one |
+| Functional Programming (DRY) | Decouple iteration/traversal logic from business calculations |
+| Map Polyfill (`Array.prototype`) | Custom array method using `this` to access array elements and apply callback |
+| `Array.prototype.map()` | Transforms every element 1:1; output array length always matches input |
+| `Array.prototype.filter()` | Selects subset of elements satisfying a boolean predicate condition |
+| `Array.prototype.reduce()` | Aggregates array elements into a single accumulator value (number, object, or array) |
 | Event Listener Cleanup | Handlers retain closures in heap; remove with `removeEventListener` to prevent memory leaks |
 | Web APIs | Browser features outside JS engine (`setTimeout`, DOM, `fetch`, `console`) exposed on `window` |
 | Queue Starvation | Continuous microtasks block macrotasks/UI from ever executing |
