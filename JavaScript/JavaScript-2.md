@@ -24,7 +24,9 @@ Core JS internals for interview prep — Namaste JavaScript series.
 - [11. Event Loop & Async Model](#11-event-loop--async-model)
 - [12. First-Class Functions & Function Types](#12-first-class-functions--function-types)
 - [13. Callback Functions & Event Listeners](#13-callback-functions--event-listeners)
-- [14. Quick Summary Table](#14-quick-summary-table)
+- [14. JS Engine Architecture & Google V8](#14-js-engine-architecture--google-v8)
+- [15. Trust Issues with setTimeout()](#15-trust-issues-with-settimeout)
+- [16. Quick Summary Table](#16-quick-summary-table)
 
 </details>
 
@@ -601,6 +603,33 @@ When reading any async snippet:
 2. **Drain microtasks** — execute all Promise callbacks in FIFO order; closure variables read their **current** value at invocation time.
 3. **Process macrotasks** — pop one at a time; if a macrotask queues a new microtask, that microtask runs before the next macrotask.
 
+---
+
+### 🌐 Web APIs — Browser Superpowers
+
+The JavaScript engine itself has **no built-in timer, DOM access, network fetch, or local storage** — it only possesses the Call Stack and Memory Heap. The host browser environment provides these capabilities as **Web APIs** and exposes them on the global `window` object:
+
+| Web API | Provided Capability | Exposed Through |
+|---|---|---|
+| `setTimeout()` / `setInterval()` | Timer & delay scheduling | `window.setTimeout` |
+| DOM APIs (`document.*`) | HTML DOM tree inspection & mutation | `window.document` |
+| `fetch()` | Network / HTTP requests | `window.fetch` |
+| `localStorage` / `sessionStorage` | Persistent client-side key-value storage | `window.localStorage` |
+| `console` | Debug stream / logging output | `window.console` *(even `console.log` is a Web API!)* |
+
+---
+
+### 🚨 Queue Starvation (Microtask Priority Trap)
+
+The Event Loop prioritizes the **Microtask Queue** over the Callback (Macrotask) Queue. It completely drains the Microtask Queue before it picks up a single Macrotask.
+
+> ⚠️ **Starvation Warning:** If a microtask continuously schedules another microtask (e.g. recursive `Promise.resolve().then(...)` loops), the Call Stack never yields to the Callback Queue. Timers (`setTimeout`), DOM event handlers (`click`, `scroll`), and UI rendering will **starve** and cause the page to freeze.
+
+| Queue | Tasks Included | Processing Strategy |
+|---|---|---|
+| **Microtask Queue** | `Promise` callbacks (`.then`, `.catch`, `.finally`), `queueMicrotask()`, `MutationObserver` | **Drained completely** per Event Loop tick |
+| **Callback (Macrotask) Queue** | `setTimeout()`, `setInterval()`, DOM event listeners | **One task picked** per tick after microtasks clear |
+
 <p align="right">(<a href="#top">back to top</a>)
 <hr/>
 
@@ -815,7 +844,146 @@ btn.removeEventListener("click", handleClick);
 <p align="right">(<a href="#top">back to top</a>)
 <hr/>
 
-## 14. Quick Summary Table
+## 14. JS Engine Architecture & Google V8
+
+A JavaScript engine is not a physical hardware machine — it is a program (typically written in C++) that executes JS source code by translating it into low-level machine instructions.
+
+### 📦 JavaScript Runtime Environment (JRE)
+
+The engine cannot run in isolation. It requires an enclosing **Runtime Environment**:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              JAVASCRIPT RUNTIME ENVIRONMENT (JRE)           │
+│                                                             │
+│  ┌──────────────────────────┐    ┌───────────────────────┐  │
+│  │        JS ENGINE         │    │  Web APIs (Browser)   │  │
+│  │  ┌──────────┐ ┌────────┐ │    │  or C++ APIs (Node)   │  │
+│  │  │Heap (Mem)│ │CallStk │ │    │  (timers, DOM, fetch) │  │
+│  │  └──────────┘ └────────┘ │    └───────────┬───────────┘  │
+│  └─────────────┬────────────┘                │              │
+│                │                             │              │
+│  ┌─────────────▼────────────┐    ┌───────────▼───────────┐  │
+│  │        EVENT LOOP        │◄───┤ Callback / Microtask  │  │
+│  │                          │    │ Queues                │  │
+│  └──────────────────────────┘    └───────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+| Engine | Host Environment | Creator / Maintainer |
+|---|---|---|
+| **V8** | Google Chrome, Chromium, Node.js, Brave, Edge | Google |
+| **SpiderMonkey** | Mozilla Firefox | Brendan Eich (Netscape / Mozilla) |
+| **JavaScriptCore (Nitro)** | Apple Safari | Apple |
+| **Chakra** | Internet Explorer / Legacy Edge | Microsoft |
+
+---
+
+### ⚙️ The 3 Engine Execution Phases
+
+Every modern JS engine processes code through three distinct phases:
+
+```
+Source Code ──► [ 1. Parsing ] ──► AST ──► [ 2. JIT Compilation ] ──► Bytecode / Machine Code ──► [ 3. Execution ]
+```
+
+#### 1. Parsing
+- The syntax parser reads the raw text and generates **Tokens** (e.g. `let`, `a`, `=`, `7`).
+- Converts tokens into an **Abstract Syntax Tree (AST)** — a hierarchical JSON-like tree defining the program syntax.
+
+#### 2. Compilation — Just-In-Time (JIT)
+JavaScript is neither purely interpreted nor purely compiled:
+- **Interpreter:** Fast startup; executes code immediately line-by-line, but repeatedly executes loops slowly without optimization.
+- **Compiler:** Slow startup (compilation pause before execution), but outputs blazingly fast machine code.
+- **JIT Compilation:** Combines both. The interpreter starts executing bytecode instantly, while an optimizing compiler monitors "hot" (frequently called) code and compiles it directly into machine code on the fly.
+
+#### 3. Execution (Google V8 Pipeline)
+Inside Google's V8 engine:
+
+| Component | Role | Function |
+|---|---|---|
+| **Ignition** | Fast Interpreter | Compiles AST directly into **Bytecode** for instant execution |
+| **TurboFan** | Optimizing Compiler | Compiles hot bytecode into highly optimized **Machine Code** based on runtime type profiles |
+| **De-optimizer** | Type Bailout | If polymorphic types violate compiler assumptions, machine code bails back to Ignition bytecode |
+| **Orinoco** | Garbage Collector | Performs concurrent, parallel **Mark-and-Sweep** to clean unreferenced heap memory |
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 15. Trust Issues with setTimeout()
+
+`setTimeout(callback, delay)` does **not** guarantee that the callback executes exactly after `delay` milliseconds.
+
+> ⚠️ **The Golden Rule:** The timer delay specifies the **guaranteed minimum delay** before the callback is placed in the queue, NOT the exact time it will run on the Call Stack.
+
+---
+
+### ⏱️ Why Timers Suffer Delays
+
+When `setTimeout(cb, 5000)` is invoked:
+1. The Web API registers the timer and runs the 5000ms countdown in the background.
+2. At 5000ms, the Web API pushes `cb` into the **Callback (Task) Queue**.
+3. `cb` must wait in the queue until:
+   - The **Call Stack** is completely empty (current synchronous script finishes).
+   - The **Microtask Queue** is completely drained.
+4. If synchronous code blocks the Call Stack for 10 seconds, `cb` waits for the full 10 seconds before executing.
+
+```js
+console.log("Start");
+
+setTimeout(function cb() {
+  console.log("Callback executed");
+}, 5000);
+
+console.log("End");
+
+// Simulate 10 seconds of blocking synchronous work
+const startTime = Date.now();
+while (Date.now() < startTime + 10000) {
+  // Main thread blocked for 10s
+}
+
+console.log("Main thread unblocked");
+
+// Output:
+// 1. "Start"
+// 2. "End"
+// 3. "Main thread unblocked" (after 10s)
+// 4. "Callback executed"     (ran after 10s, NOT 5s!)
+```
+
+---
+
+### ⏳ The `setTimeout(fn, 0)` Pattern
+
+Passing `0ms` does **not** make a callback synchronous:
+
+- The callback is still handed to the Web API timer, pushed to the Callback Queue, and executed only after all top-level synchronous code and microtasks clear.
+- **Interview Use Case:** Used to defer non-critical operations, giving the browser's main thread a breather to handle UI re-renders or prioritize immediate user events before the deferred work runs.
+
+```js
+console.log("A");
+
+Promise.resolve("resolved").then((val)=> console.log("0 " + val)); // micro-task
+setTimeout(() => {  // macro-task
+  console.log("B (0ms)");
+}, 0);
+
+console.log("C");
+
+// Output: "A" → "C"  → "0 resolved" → "B (0ms)"
+```
+
+| Dimension | Synchronous Execution | `setTimeout(fn, 0)` |
+|---|---|---|
+| **Path** | Runs immediately on Call Stack | Web API → Callback Queue → Event Loop → Call Stack |
+| **Execution Timing** | Immediate (current tick) | Deferred to next Macrotask turn (after sync & microtasks) |
+| **Main Thread Impact** | Occupies Call Stack | Yields Call Stack, keeps UI responsive |
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 16. Quick Summary Table
 
 | Concept | Key Takeaway |
 |---|---|
@@ -827,6 +995,12 @@ btn.removeEventListener("click", handleClick);
 | First-Class Functions | Functions treated as values (pass, return, assign) |
 | Callback Function | Function passed as argument; enables async non-blocking execution |
 | Event Listener Cleanup | Handlers retain closures in heap; remove with `removeEventListener` to prevent memory leaks |
+| Web APIs | Browser features outside JS engine (`setTimeout`, DOM, `fetch`, `console`) exposed on `window` |
+| Queue Starvation | Continuous microtasks block macrotasks/UI from ever executing |
+| V8 Engine Pipeline | AST → Ignition (Bytecode) ↔ TurboFan (Optimized Machine Code) |
+| JIT Compilation | Combines interpreter speed at startup with compiler optimizations during runtime |
+| `setTimeout` Trust Issues | Delay is minimum wait time before queuing; blocked Call Stack postpones execution |
+| `setTimeout(fn, 0)` | Defers callback to next macrotask turn; does not execute synchronously |
 | Call Stack | LIFO — manages execution context order |
 | `this` at global scope | `window` (browser) / `global` (Node) |
 | `undefined` | Declared, not yet assigned |
@@ -834,8 +1008,8 @@ btn.removeEventListener("click", handleClick);
 | Lexical Environment | Local memory + parent reference chain |
 | Scope Chain | Walk parent refs until variable found or null |
 | Closure | Inner fn retains outer lexical env after outer returns |
-| Microtask Queue | Runs before Macrotask (Promises) |
-| Macrotask Queue | Runs after microtasks clear (setTimeout) |
+| Microtask Queue | Runs before Macrotask (Promises, `MutationObserver`) |
+| Macrotask Queue | Runs after microtasks clear (`setTimeout`, I/O, DOM events) |
 
 <p align="right">(<a href="#top">back to top</a>)
 <hr/>
