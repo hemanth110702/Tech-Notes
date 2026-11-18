@@ -28,7 +28,8 @@ Core JS internals for interview prep — Namaste JavaScript series.
 - [15. Trust Issues with setTimeout()](#15-trust-issues-with-settimeout)
 - [16. Higher-Order Functions & Polyfills](#16-higher-order-functions--polyfills)
 - [17. Functional Array Methods — map, filter & reduce](#17-functional-array-methods--map-filter--reduce)
-- [18. Quick Summary Table](#18-quick-summary-table)
+- [18. Callback Pitfalls — Callback Hell & Inversion of Control](#18-callback-pitfalls--callback-hell--inversion-of-control)
+- [19. Quick Summary Table](#19-quick-summary-table)
 
 </details>
 
@@ -1300,7 +1301,76 @@ console.log(under50Names); // ['decider', 'dead', 'cristiano']
 <p align="right">(<a href="#top">back to top</a>)
 <hr/>
 
-## 18. Quick Summary Table
+
+## 18. Callback Pitfalls — Callback Hell & Inversion of Control
+
+Callbacks are fundamental to JavaScript’s asynchronous execution model, allowing the single main thread to offload tasks to Web APIs. However, relying on callbacks for complex asynchronous workflows exposes two major architectural flaws: **Callback Hell** and **Inversion of Control**.
+
+| Pitfall | Core Nature | Technical Risk | Solution |
+|---|---|---|---|
+| **Callback Hell** | Code structure / readability issue | Deeply nested, unmaintainable horizontal pyramid (**Pyramid of Doom**) | Promise Chaining |
+| **Inversion of Control** | Authority / reliability flaw | Blindly trusting external/3rd-party code with execution authority | Native Promises |
+
+---
+
+### 🔥 1. Callback Hell (The Pyramid of Doom)
+
+When asynchronous tasks have sequential dependencies (e.g., placing an order → processing payment → generating summary → updating wallet), nesting callbacks inside callbacks causes the code to grow horizontally instead of vertically.
+
+```js
+// E-commerce checkout flow via nested callbacks
+const cart = ["shoes", "pants", "kurta"];
+
+api.createOrder(cart, function (orderId) {
+  api.proceedToPayment(orderId, function (paymentInfo) {
+    api.showOrderSummary(paymentInfo, function (summary) {
+      api.updateWallet(summary, function () {
+        console.log("Wallet updated successfully");
+      });
+    });
+  });
+});
+```
+
+- **Visual Shape:** Known as the **Pyramid of Doom** (unmaintainable `})` trailing closing tags).
+- **Problems:**
+  - Highly brittle and difficult to debug or refactor.
+  - Exception handling requires boilerplate error checks at every single nesting level.
+  - Breaches code readability and maintainability.
+
+---
+
+### 🎛️ 2. Inversion of Control (The Fatal Flaw)
+
+**Inversion of Control (IoC)** is far more dangerous than Callback Hell:
+> When we pass a callback function to another function, we **surrender control** over our code's execution to that receiving function.
+
+```js
+api.createOrder(cart, function () {
+  api.proceedToPayment(); // We handed over control of payment to createOrder!
+});
+```
+
+#### Why Inversion of Control is Dangerous:
+1. **Blind Trust:** You assume `createOrder` will faithfully execute `proceedToPayment()`. But `createOrder` could be an external npm package or written by another team.
+2. **Double/Multiple Invocations:** If `createOrder` has an internal bug or retry loop, it might invoke `proceedToPayment()` **twice**, charging the customer twice.
+3. **Zero Invocations:** If an unhandled error occurs internally inside `createOrder`, your callback may **never be called at all**, silently dropping the user transaction.
+4. **Altered Timing:** The callback might be invoked synchronously instead of asynchronously, altering expected execution flow.
+
+> ⚠️ **The Core Problem:** You are no longer in control of when, how many times, or if your critical code runs.
+
+---
+
+### 🌉 The Bridge to Promises
+
+ES6 **Promises** were designed specifically to eliminate both pitfalls:
+- **Solves Inversion of Control:** Instead of *passing* our callback into an untrusted function, the function *returns an immutable Promise object*. We attach our handler using `.then()`. The Promise guarantees our callback is called **exactly once**, only upon completion, and never mutated.
+- **Solves Callback Hell:** Flattens nested pyramids into a clean, vertical **Promise Chain**.
+
+<p align="right">(<a href="#top">back to top</a>)
+<hr/>
+
+## 19. Quick Summary Table
 
 | Concept | Key Takeaway |
 |---|---|
@@ -1317,6 +1387,8 @@ console.log(under50Names); // ['decider', 'dead', 'cristiano']
 | `Array.prototype.map()` | Transforms every element 1:1; output array length always matches input |
 | `Array.prototype.filter()` | Selects subset of elements satisfying a boolean predicate condition |
 | `Array.prototype.reduce()` | Aggregates array elements into a single accumulator value (number, object, or array) |
+| Callback Hell | Deeply nested callbacks forming a "Pyramid of Doom"; brittle and unmaintainable |
+| Inversion of Control (IoC) | Surrendering execution authority of callbacks to external functions (trust issue) |
 | Event Listener Cleanup | Handlers retain closures in heap; remove with `removeEventListener` to prevent memory leaks |
 | Web APIs | Browser features outside JS engine (`setTimeout`, DOM, `fetch`, `console`) exposed on `window` |
 | Queue Starvation | Continuous microtasks block macrotasks/UI from ever executing |
